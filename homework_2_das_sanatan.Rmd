@@ -167,19 +167,19 @@ Database -
 
 ## What is 'Educational Loan Assistant'?
 
-**T**he Educational Loan Assistant is a tool that provides guidance and analysis to the **Banks and Credit Unions** before the approve any educational loan to the student loan application.This tool provides a thorough analysis report on the information provided in the loan application based on the predictive model we build. It also depicts the likelihood (Not possible, May be possible, Strongly possible, Not recommended ) of a loan application being defaulter. It is the final decision of the Bank and the Credit Union to take the final decision on the loan approval. The Educational Loan Assistant is a helper to report the risks so that the banker or lender can take well informed decision.
+**T**he Educational Loan Assistant is a tool that provides guidance and analysis to the **Banks and Credit Unions** before they approve any educational loan to the student loan applications.This tool provides a thorough analysis report on the information provided in the loan application based on the predictive model we build. It also depicts the likelihood of a loan application being default (Not possible, May be possible, Strongly possible, Not recommended ). It is the final decision of the Bank and the Credit Union agents to take on the loan approval. The Educational Loan Assistant is a helper to report the risks so that the banker or lender can take well informed decision.
 
-**E**very year U.S. Department of Education releases a detailed dataset on the student debt and repayment. These datasets have wide variety of features and information about the educational loan system in the USA. This project does a thorough analysis of those data and builds a robust predictive model for predicting the risk on student loan approvals to help the lender organizations. This porjetc also buils the API (application programming interface) and a web based too, so that the bankers and lending agents can use it. The API should be built in such a way that any developer can use it from different kind of applications (web tools or mobile apps)
+**E**very year U.S. Department of Education releases a detailed dataset on the student debt and repayment. These datasets have wide variety of features and information about the educational loan system in the USA. This project does a thorough analysis of those data and builds a robust predictive model for predicting the risk on student loan approvals to help the lender organizations. This porjet also buils an API (application programming interface) and a web based tool, so that the bankers and lending agents can use it. The API is built in such a way that any developer can use it from different kind of client applications (web apps or mobile apps)
 
-**T**his tool will be able to train and build the model again again when new data set is added to the existing data set as every year the new data set will be released by the U.S. Department of Education.
+**T**his tool will be able to train and build the model again and again when new data set is added to the existing data set as every year a new data set will be released by the U.S. Department of Education.
 
-**I**t will also generate a monthly report on the predictions and a yearly report to validate if there is any default in a student loan where the tool predicted as no risk or low risk. Althouh we have to wait for some time to see the first analysis/validation report (tool performace metrics). 
+**I**t will also generate a monthly report on the predictions and a yearly report of validations to validate if there is any default in a student loan where the tool predicted as no risk or low risk. Althouh we have to wait for some time to see the first analysis/validation report (tool performace metrics). 
 
-## The project Requirements
+## The Project Requirements
 
 ### Business Understanding (Problem Formulation)
 
-**T**he Feferal Student Aid releases multiple daasets and reports every for the Official Cohort Default Rates for Schools. These datsets are available in their website for download in different formats (excel, csv, html and pdf files). They also publish the detailed instructions how to use these data files. They also publish the field definitions, abbreviations used etc. so that the values can be extracted from those information.
+**T**he Banks and Credit Unions spends billions of dollars every year for recovering the student loan debt. Feferal Student Aid releases multiple daasets and reports every for the Official Cohort Default Rates for Schools. These datsets are available in their website for download in different formats (excel, csv, html and pdf files). They also publish the detailed instructions how to use these data files. They also publish the field definitions, abbreviations used etc. so that the values can be extracted from those information. To solve this problem of the lending organizations, we analyze the data and create a model to help them to reduce the defaults.
 
 ### Data Collection
 
@@ -249,36 +249,36 @@ ggplot(df3, aes(Ethnicity, DefaultCount3)) +
 
 ### User Acceptance
 
-**F**inally we will run some sample reports (monthly and annually)
+**F**inally we will run the aplication for agents to help them and generate some sample reports (monthly and annually)
 
 
 ## What are the benefits from the solution (predictive modeling)?
 
-**T**here will be a list of advantages that the Bank and Credit Unions will get while using this tool (model):-
+**T**here will be a list of advantages that the Bank and Credit Unions will get while using this tool (model):
 
-* The phone banker, store banker and the lending agents will get a full insght of information, risk and statistcal advice from this tool before approving any student loan. This will reduce the number of default incidents in a significant number for the lending organizations.
+* **A recommendation engine** : The phone banker, store banker and the lending agents will get a full insght of information, risk and statistcal advice from this tool before approving any student loan. This will reduce the number of default incidents in a significant number for the lending organizations.
 
-* The above statistical report shows that increasoing number of student loan default is a threat and huge loss for Banks, Credit Unions or any Lending organizations. We see that billions of dollars are not paid or not paid on time in the student loan business. Any prevention of the default rate will save a significant amount of money of the leding organizations.
+* **Reduce huge monetary loss** : The above statistical report shows that increasing number of student loan default is a threat and huge loss for Banks, Credit Unions or any Lending organizations. We see that billions of dollars are not paid or not paid on time in the student loan business. Any prevention of the default rate will save a significant amount of money of the leding organizations. ***50% correct predictions will save $2.75 billions per year***
 
-* The tool/model will generate a monthly and annual report so that they can measure the business performance metrics.
+* **Business growth** : The tool/model will generate a monthly and annual report so that they can measure the business performance metrics.
 
-* The product managers and the business analysts will get to know the important factors of the Educational Loan business. They might get inspired to revise their list of information that they collect from the student/family/individuals through paper based applications or electronically.
+* **New product ideas** : The product managers and the business analysts will get to know the important factors of the Educational Loan business. They might get inspired to revise their list of information that they collect from the student/family/individuals through paper based applications or electronically.
 
-* The decreasing number od defaults in the lending business will strengthen the national and global economy and reduce the chances of recession. Overall economicall growth will increase.
+* **Improving global economy** : The decreasing number od defaults in the lending business will strengthen the national and global economy and reduce the chances of recession. Overall economicall growth will increase.
 
 ## Who are going to use this solution (business users)?
 
-**T**his tool (model) can be used by multiple business users for their own benefits in the Banking and Student Loan organizations. We can think of the follwing business users who can use this model (in a different format) and get different kinds of benefit out of it.
+**T**his tool (model) can be used by multiple business users (of different roles) for their own benefits in the Banking and Student Loan organizations. We can think of the follwing business users who can use this model (in a different format: Web Application or PDF Reports) and get different kinds of benefits out of it.
 
-* **A phone banker/store banker or Lending agent** : This kind of users will use the user interfaace via a website or web application to get the instant help on analysing the stundent loan application data and seek for a recommendation wheteher or not to approve a loan application. These are daily business users. Most of the users will fall in this category.
+* **A phone banker/store banker or lending agent** : This kind of users will use the user interfaace via a website or a web application to get the instant help on analysing the stundent loan application data and seek for a recommendation whether or not to approve a loan application. These are daily business users. Most of the users will fall into this category.
 
-* **Bank, Credit Unions and Lending Organizations Management** : This kind of users will use the tool in the format of report and metrics, will look at the figures and predict the future profit. They are not daily users. They will see the reports monthly an annually.
+* **Bank, Credit Unions and Lending Organizations Management** : This kind of users will use the tool in the format of reports and metrics, will look at the figures and predict the future profit of the organization. They are not daily users. They will see the reports monthly an annually or on-demand basis.
 
-* **Business Analysts and Product Managers** : This kind of users will get an experience of both the format (website and the PDF reports). They will use those to create new business cases, improving their products and creating a new products.
+* **Business Analysts and Product Managers** : This kind of users will get an experience of both the formats (Web Application and the PDF Reports). They will use those to create new business ideas, improving their existing products and creating new products.
 
 ## Timelines of the solution development
 
-**T**he high level timelines for this project implementation will be as below:
+**T**he high level estimated timelines for this project implementation will be as below:
 
 ```{r var6, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
 
@@ -291,20 +291,31 @@ kable(df6)
 
 ## Risks Involved (estimated)
 
-**T**he goal of this solution is to help the Student Loan organizations to make well informed decisions while approving any educational loan application. Currentl today they are already having a high rate of the default applications. It can't get worse than as it is today. But still this project and the model comes with some low risks with it. We can list down the risk statements clearly as below so that the business is aware of befire delving into the model development.
+**T**he goal of this solution is to help the Student Loan organizations to make well informed decisions while approving any educational loan application. Currently today they are already having a high rate of the default applications as mentioned in the report. It can't get worse than as it is today. But still this project and the model comes with some low severity risks with it. We can list down the risk statements clearly as below so that the business is aware of before delving into the model development.
 
 * The proposed model is built on the data released by the U.S. Department of Education. It is assumed that those data are correct and provides the right trend of the student loan debt and default. The machine learning model is all based on the data we trust. If there is any issue on the provided data, it will impact the model and prediction behavior.
 
-* As we have seen in the statistical reports that the student loan default parameters have changed time to time. So the model parameters need to be updated accordingly, feature list needs to be updated too to make more accurate preditions.
+* As we have seen in the statistical reports that the student loan default parameters/features have changed time to time. So the model parameters need to be updated accordingly time to time, feature list needs to be updated too to make more accurate preditions.
 
-* To get the first real time prediction validation, the business has to wait for quite some time as the loan payment starts long after the approval and disbursement.
+* To get the first real time prediction validation (is the prediction adding value to business?), the business/management have to wait for a quite some time as the loan payment starts long after the approval and disbursement of the loan.
 
 Although all these risks can be minimzed with proper training, validation and the test set of the data.
 
 ## Solution deployment, post production maintenance and reports
 
-**T**he goal of this solution is to help the Student Loan organizations to make well informed decisions while approving any educational loan application. Currentl today they are already having a high rate of the default applications. It can't get worse than as it is today. But still this project and the model comes with some low risks with it. We can list down the risk statements clearly as below so that the business is aware of befire delving into the model development. 
+**T**he proposed model will be deployed under a wrapper of an web API so that the above mentioned user can use the model through a nice set of user interfaces. The batch job will run periidocally for generating PDF reports. The deployment model will look like below.
+
+* **Application Module** - Model->JRI API (an API for Java and R integration)->Java Application->Web APPlication
+
+* **Batch Module** - Model->JRI API (an API for Java and R integration)->Java Application->PDF Reports (email the reports or store in a directory location)
+
+The post porduction and the maintenance team will be using the log statements and checking the model/tool performance metrics on regular basis.
 
 ## Conclusion
 
-**T**his report analyzes new data on student debt and repayment, released by the U.S. Department of Education in October 2017. Previously available data have been limited to borrowers only, follow students for a relatively short period (3-5 years) after entering repayment, and had only limited information on student characteristics and experiences. The new data allow for the most comprehensive assessment to date of student debt and default from the moment students first enter college, to when they are repaying loans up to 20 years later, for two cohorts of first-time entrants (in 1995-96 and 2003-04). This report provides a broader perspective on student debt and default that considers all college entrants rather than just borrowers, provides substantially longer follow-up, and enables a more detailed analysis of trends over time and heterogeneity across subgroups than previously possible.**T**his report analyzes new data on student debt and repayment, released by the U.S. Department of Education in October 2017. Previously available data have been limited to borrowers only, follow students for a relatively short period (3-5 years) after entering repayment, and had only limited information on student characteristics and experiences. The new data allow for the most comprehensive assessment to date of student debt and default from the moment students first enter college, to when they are repaying loans up to 20 years later, for two cohorts of first-time entrants (in 1995-96 and 2003-04). This report provides a broader perspective on student debt and default that considers all college entrants rather than just borrowers, provides substantially longer follow-up, and enables a more detailed analysis of trends over time and heterogeneity across subgroups than previously possible.
+**T**he tool 'Educational Loan Assistant' analyzes the data based on student debt and repayment information, released by the U.S. Department of Education and creates a predictive model. To achieve more accuracy on the model prediction, we can use the private and confidential data of the Bank and Credit Unions (if we create a model specific to the organization and every lending organization ahs their customer database). Those are more realistic and accurate information to use and will provide better results.
+This idea can also be extended to other Lines of Businesses (LOBs) like **Home Mortgage Loans**, **Personal Loans and Lines of Credit**, **Auto Loans** etc. Although, every specific Lines of Business will have a different set of features/predictors to work with. If this model looks promising and the business users get significant benefit using this model, we will extend the same idea for other Lines of Businesses in future.
+
+
+
+
