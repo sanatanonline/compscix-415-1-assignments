@@ -16,8 +16,9 @@ library(broom)
 ```
 
 ```{r var1, eval=TRUE, echo=FALSE}
-
-default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/default_rate.xls")
+# load the data set from excel file
+default_rates <- read_excel("/opt/apps/code/git/compscix-415-1-assignments/data/peps3xx.xls")
+# add factor to the 'char' columns
 default_rates$Name <- as.factor(default_rates$Name)
 default_rates$State <- as.factor(default_rates$State)
 default_rates$ZipCode <- as.factor(default_rates$ZipCode)
@@ -26,46 +27,92 @@ default_rates$SchoolType <- as.factor(default_rates$SchoolType)
 default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
 default_rates$Prate <- as.factor(default_rates$Prate)
 default_rates$CongDis <- as.factor(default_rates$CongDis)
+# convert the columns to 'double' data type
 default_rates$Drate <- as.double(default_rates$Drate)
 default_rates$Num <- as.double(default_rates$Num)
 default_rates$Denom <- as.double(default_rates$Denom)
-
+# take a look at the data
 #glimpse(default_rates)
-
+# plot the relationship between Ethnic Code and the Default Rate
 default_rates %>% 
 ggplot() + 
   geom_bar(aes(x = EthnicCode, y = Drate), stat = 'identity') +
   theme_bw()
-
+# plot the relationship between Program Length and the Default Rate
 default_rates %>% 
 ggplot() + 
   geom_bar(aes(x = ProgLength, y = Drate), stat = 'identity') +
   theme_bw()
-
+# plot the relationship between School Type and the Default Rate
 default_rates %>% 
 ggplot() + 
   geom_bar(aes(x = SchoolType, y = Drate), stat = 'identity') +
   theme_bw()
-
+# plot the relationship between Prate (what type of rate was calculated for the institution.) and the Default Rate
 default_rates %>% 
 ggplot() + 
   geom_bar(aes(x = Prate, y = Drate), stat = 'identity') +
   theme_bw()
-
+# plot the relationship between Num (Number of Borrowers in Default) and the Default Rate
 ggplot(default_rates, aes(x = Num, y = Drate)) +
   geom_point(color = "blue") + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
   theme_bw()
-
+# plot the relationship between Denom (Number of Borrowers in Repay) and the Default Rate
 ggplot(default_rates, aes(x = Denom, y = Drate)) +
   geom_point(color = "blue") + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
   theme_bw()
-
-lm_4 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
+# Linear model on 'Name' feature
+lm_1 <- lm(Drate ~ Name, data = default_rates)
+summary(lm_1)
+tidy(lm_1)
+glance(lm_1)
+# Linear model on 'State' feature
+lm_2 <- lm(Drate ~ State, data = default_rates)
+summary(lm_2)
+tidy(lm_2)
+glance(lm_2)
+# Linear model on 'ZipCode' feature
+lm_3 <- lm(Drate ~ ZipCode, data = default_rates)
+summary(lm_3)
+tidy(lm_3)
+glance(lm_3)
+# Linear model on 'ProgLength' feature
+lm_4 <- lm(Drate ~ ProgLength, data = default_rates)
 summary(lm_4)
 tidy(lm_4)
 glance(lm_4)
+# Linear model on 'SchoolType' feature
+lm_5 <- lm(Drate ~ SchoolType, data = default_rates)
+summary(lm_5)
+tidy(lm_5)
+glance(lm_5)
+# Linear model on 'Num' feature
+lm_6 <- lm(Drate ~ Num, data = default_rates)
+summary(lm_6)
+tidy(lm_6)
+glance(lm_6)
+# Linear model on 'Denom' feature
+lm_7 <- lm(Drate ~ Denom, data = default_rates)
+summary(lm_7)
+tidy(lm_7)
+glance(lm_7)
+# Linear model on 'Prate' feature
+lm_8 <- lm(Drate ~ Prate, data = default_rates)
+summary(lm_8)
+tidy(lm_8)
+glance(lm_8)
+# Linear model on 'EthnicCode' feature
+lm_9 <- lm(Drate ~ EthnicCode, data = default_rates)
+summary(lm_9)
+tidy(lm_9)
+glance(lm_9)
+# Final model usiing all features
+lm_0 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
+summary(lm_0)
+tidy(lm_0)
+glance(lm_0)
 
 
 ```
