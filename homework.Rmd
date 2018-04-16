@@ -1,0 +1,72 @@
+---
+title: "Homework"
+author: "Sanatan Das"
+date: "April 14, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(readxl)
+library(broom)
+```
+
+```{r var1, eval=TRUE, echo=FALSE}
+
+default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/default_rate.xls")
+default_rates$Name <- as.factor(default_rates$Name)
+default_rates$State <- as.factor(default_rates$State)
+default_rates$ZipCode <- as.factor(default_rates$ZipCode)
+default_rates$ProgLength <- as.factor(default_rates$ProgLength)
+default_rates$SchoolType <- as.factor(default_rates$SchoolType)
+default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
+default_rates$Prate <- as.factor(default_rates$Prate)
+default_rates$CongDis <- as.factor(default_rates$CongDis)
+default_rates$Drate <- as.double(default_rates$Drate)
+default_rates$Num <- as.double(default_rates$Num)
+default_rates$Denom <- as.double(default_rates$Denom)
+
+#glimpse(default_rates)
+
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = EthnicCode, y = Drate), stat = 'identity') +
+  theme_bw()
+
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = ProgLength, y = Drate), stat = 'identity') +
+  theme_bw()
+
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = SchoolType, y = Drate), stat = 'identity') +
+  theme_bw()
+
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = Prate, y = Drate), stat = 'identity') +
+  theme_bw()
+
+ggplot(default_rates, aes(x = Num, y = Drate)) +
+  geom_point(color = "blue") + 
+  geom_smooth(method = "lm", se = FALSE, color = "red") + 
+  theme_bw()
+
+ggplot(default_rates, aes(x = Denom, y = Drate)) +
+  geom_point(color = "blue") + 
+  geom_smooth(method = "lm", se = FALSE, color = "red") + 
+  theme_bw()
+
+lm_4 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
+summary(lm_4)
+tidy(lm_4)
+glance(lm_4)
+
+
+```
+
