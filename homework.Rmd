@@ -114,6 +114,5 @@ summary(lm_0)
 tidy(lm_0)
 glance(lm_0)
 
-
 ```
 
