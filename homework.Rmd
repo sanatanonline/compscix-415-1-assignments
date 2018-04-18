@@ -26,7 +26,20 @@ default_rates$ProgLength <- as.factor(default_rates$ProgLength)
 default_rates$SchoolType <- as.factor(default_rates$SchoolType)
 default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
 default_rates$Prate <- as.factor(default_rates$Prate)
-default_rates$CongDis <- as.factor(default_rates$CongDis)
+default_rates$CongDis <- as.factor(default_rates$CongDis).
+default_rates <- default_rates %>% mutate(ProgLength_fct = case_when(ProgLength == 0 ~ 'Short-Term',
+                                     ProgLength == 1 ~ 'Graduate/Professional',
+                                     ProgLength == 2 ~ 'Non-Degree',
+                                     ProgLength == 3 ~ 'Non-Degree 1 Year ',
+                                     ProgLength == 4 ~ 'Non-Degree 2 Years',
+                                     ProgLength == 5 ~ 'Associates Degree',
+                                     ProgLength == 6 ~ 'Bachelors Degree',
+                                     ProgLength == 7 ~ 'First Professional Degree',
+                                     ProgLength == 8 ~ 'Masters Degree or Doctors Degree',
+                                     ProgLength == 9 ~ 'Professional Certification',
+                                     ProgLength == 10 ~ 'Undergraduate',
+                                     ProgLength == 11 ~ 'Non-Degree 3 Plus Years',
+                                     ProgLength == 12 ~ 'Two-Year Transfer'))
 # convert the columns to 'double' data type
 default_rates$Drate <- as.double(default_rates$Drate)
 default_rates$Num <- as.double(default_rates$Num)
