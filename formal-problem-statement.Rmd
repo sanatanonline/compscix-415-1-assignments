@@ -1,6 +1,5 @@
 ---
-title: '''The emerging student loan default crisis is worse than we thought'': A Brief
-  Study and A Solution(using predictive model)'
+title: "A predictive model to better evaluate the student loan default risk"
 author: "Sanatan Das"
 date: "April 08, 2018"
 output:
@@ -23,17 +22,9 @@ library(knitr)
 
 \newpage
 
-# The Problem: A Study Report on Student Loan Default Crisis
+# The Problem: Student Loan Default Crisis
 
-* *"The number of people defaulting on federal student loans is climbing"* - [The Washington Post](https://www.washingtonpost.com/news/grade-point/wp/2017/09/28/the-number-of-people-defaulting-on-federal-student-loans-is-climbing/?utm_term=.c41467acd24e)
-
-* *"Student Loan Defaults Rise - What To Do Now"* - [Forbes](https://www.forbes.com/sites/zackfriedman/2017/10/06/student-loan-default/#157327128debe)
-
-* *"There's a Massive Racial Gap in Student Loan Defaults, New Data Show"* - [Time.com](http://time.com/money/4986253/race-gap-student-loan-defaults-debt/)
-
-* *"Projections for student loan defaults are terrifying. It's time to act."* -  [The Washington Post](https://www.washingtonpost.com/blogs/post-partisan/wp/2018/01/22/projections-for-student-loan-defaults-are-terrifying-its-time-to-act/?utm_term=.074258c9c896)
-
-## Executive Summary
+## Summary of the Problem
 
 **T**his report analyzes new data on student debt and repayment, released by the U.S. Department of Education in October 2017. Previously available data have been limited to borrowers only, follow students for a relatively short period (3-5 years) after entering repayment, and had only limited information on student characteristics and experiences. The new data allow for the most comprehensive assessment to date of student debt and default from the moment students first enter college, to when they are repaying loans up to 20 years later, for two cohorts of first-time entrants (in 1995-96 and 2003-04). This report provides a broader perspective on student debt and default that considers all college entrants rather than just borrowers, provides substantially longer follow-up, and enables a more detailed analysis of trends over time and heterogeneity across subgroups than previously possible.
 
@@ -88,35 +79,6 @@ ggplot(df, aes(x=default_date, y=default_amount)) +
 
 Based on the patterns observed for the earlier cohort, a simple projection indicates that about 38 percent of all borrowers from the 2003-04 cohort will have experienced a default by 2023.
 
-## Federal Direct and Federal Family Loans (Sep 2016 Report)
-
-```{r var2, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
-
-Loan_Type <- c('In-school','Grace period','Repayment','Deferment','Forbearance','Default','Other')
-Direct_Loans_in_billions <- c(142.5,50.1,478.6,107.3,96.2,67.5,6.9)
-Federal_Family_Loans_in_billions <- c(1.3,0.7,212.7,20.5,29.3,65.5,5.3)
-df4 <- data.frame(Loan_Type, Direct_Loans_in_billions,Federal_Family_Loans_in_billions)
-
-ggplot(df4, aes(Loan_Type, Direct_Loans_in_billions)) +
-  geom_bar(stat="identity") +
-  labs(x=" ", y="Amount (in billions)", title="Figure2 : Loan status of outstanding Education Loans (Direct Loans)") +
-  theme_bw()
-
-ggplot(df4, aes(Loan_Type, Federal_Family_Loans_in_billions)) +
-  labs(x=" ", y="Amount (in billions)", title="Figure3 : Loan status of outstanding Education Loans (Federal Loans)") +
-  geom_bar(stat="identity") +
-  theme_bw()
-
-```
-
-(Data Source : [Federal Student Aid](https://studentaid.ed.gov/sa/about/data-center/student/default))
-
-## The world outside the For-Profits
-
-The high concentration of defaults in the for-profit sector raises the question: how different would the overall patterns look, if we set aside the for-profits? The for-profit sector, the changes over time have been much more modest. Default rates overall increased by just 3 students out of every 100 (from 8 to 11) outside the for-profit sector. Among black students, default rates increased by 8 students per 100 (from 20 to 28) outside the for-profit sector, compared to an increase of 21 students per 100 among those who ever attended a for-profit college.
-
-For-profit enrollment contributes to defaults even among students initially starting at community colleges, due to subsequent transfers. If not for students later attending for-profits, community college entrants would have lower default rates than public four-year entrants.
-
 ## Conclusion
 
 The analyses presented above highlight the value of tracking individual students from the beginning of their college trajectory for many years beyond when they leave school, and the importance of disaggregating trends by student and institutional characteristics.  Key findings include:
@@ -166,6 +128,10 @@ Database -
 
 ## The Project Requirements
 
+### Goal of this project
+
+**T**he goal of this project is to create a predictive model that will help the Lending Organizations (student loan) to better evaluate the student loan applications risks of being default. The target of this project is to achieve >95% correct prediction of the default rate. Although this will take some time to evaluate the result.
+
 ### Business Understanding (Problem Formulation)
 
 **T**he Banks and Credit Unions spends billions of dollars every year for recovering the student loan debt. Feferal Student Aid releases multiple daasets and reports every for the Official Cohort Default Rates for Schools. These datsets are available in their website for download in different formats (excel, csv, html and pdf files). They also publish the detailed instructions how to use these data files. They also publish the field definitions, abbreviations used etc. so that the values can be extracted from those information. To solve this problem of the lending organizations, we analyze the data and create a model to help them to reduce the defaults.
@@ -188,13 +154,13 @@ The dataset analysis and feature extractions examples:
 #t1 <- peps300 %>%count(EthnicCode)
 
 SchoolType <- c('Public','Private','Nonprofit','Proprietary','Foreign public','Foreign private','Foreign For-Profit')
-DefaultCount1 <- c(1571,1477,1503,125,31,5,1)
-df1 <- data.frame(SchoolType, DefaultCount1)
-#kable(df1)
-ggplot(df1, aes(SchoolType, DefaultCount1)) +
-  labs(x=" ", y="Default Amount (in billions)", title="Figure4 : Default count by School Type (Year 2014)") +
-  geom_bar(stat="identity") +
-  theme_bw()
+DefaultCount <- c(1571,1477,1503,125,31,5,1)
+df1 <- data.frame(SchoolType, DefaultCount)
+kable(df1)
+#ggplot(df1, aes(SchoolType, DefaultCount1)) +
+#  labs(x=" ", y="Default Amount (in billions)", title="Figure4 : Default count by School Type (Year 2014)") +
+ # geom_bar(stat="identity") +
+ # theme_bw()
 
 ```
 
@@ -202,9 +168,9 @@ ggplot(df1, aes(SchoolType, DefaultCount1)) +
 
 ```{r var4, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
 
-ProgLength <- c('Short-Term (300–599 hours)','Graduate/Professional (≥ 300 hours)','Non-Degree (600–899 hours)','Non-Degree 1 Year (900–1799 hours)','Non-Degree 2 Years (1800–2699 hours)','Associates Degree','Bachelors Degree','First Professional Degree','Masters Degree or Doctors Degree','Professional Certification','Undergraduate (Previous Degree Required)','Non-Degree 3 Plus Years (≥ 2700 hours)','Two-Year Transfer')
-DefaultCount2 <- c(1,1,69,872,239,1085,504,35,1879,0,0,26,1)
-df2 <- data.frame(ProgLength, DefaultCount2)
+ProgLength <- c('Short-Term (300–599 hours)','Graduate/Professional','Non-Degree (600–899 hours)','Non-Degree 1 Year (900–1799 hours)','Non-Degree 2 Years (1800–2699 hours)','Associates Degree','Bachelors Degree','First Professional Degree','Masters Degree or Doctors Degree','Professional Certification','Undergraduate (Previous Degree Required)','Non-Degree 3 Plus Years','Two-Year Transfer')
+DefaultCount <- c(1,1,69,872,239,1085,504,35,1879,0,0,26,1)
+df2 <- data.frame(ProgLength, DefaultCount)
 kable(df2)
 #ggplot(df2, aes(ProgLength, DefaultCount2)) +
 #  labs(x=" ", y="Default Amount (in billions)", title="Figure5 : Default count by Program Length (Year 2014)") +
@@ -218,13 +184,13 @@ kable(df2)
 ```{r var5, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
 
 Ethnicity <- c('Native American','HBCU','Hispanic','Traditionally Black College','Ethnicity Not Reported')
-DefaultCount3 <- c(4,94,143,4471,1)
-df3 <- data.frame(Ethnicity, DefaultCount3)
-#kable(df3)
-ggplot(df3, aes(Ethnicity, DefaultCount3)) +
-  labs(x=" ", y="Default Amount (in billions)", title="Figure6 : Default count by Race/Ethnicity (Year 2014)") +
-  geom_bar(stat="identity") +
-  theme_bw()
+DefaultCount <- c(4,94,143,4471,1)
+df3 <- data.frame(Ethnicity, DefaultCount)
+kable(df3)
+#ggplot(df3, aes(Ethnicity, DefaultCount3)) +
+ # labs(x=" ", y="Default Amount (in billions)", title="Figure6 : Default count by Race/Ethnicity (Year 2014)") +
+  #geom_bar(stat="identity") +
+  #theme_bw()
 
 ```
 
@@ -240,14 +206,13 @@ ggplot(df3, aes(Ethnicity, DefaultCount3)) +
 
 **F**inally we will run the aplication for agents to help them and generate some sample reports (monthly and annually)
 
-
 ## What are the benefits from the solution (predictive modeling)?
 
 **T**here will be a list of advantages that the Bank and Credit Unions will get while using this tool (model):
 
 * **A recommendation engine** : The phone banker, store banker and the lending agents will get a full insght of information, risk and statistcal advice from this tool before approving any student loan. This will reduce the number of default incidents in a significant number for the lending organizations.
 
-* **Reduce huge monetary loss** : The above statistical report shows that increasing number of student loan default is a threat and huge loss for Banks, Credit Unions or any Lending organizations. We see that billions of dollars are not paid or not paid on time in the student loan business. Any prevention of the default rate will save a significant amount of money of the leding organizations. ***50% correct predictions will save $2.75 billions per year***
+* **Reduce huge monetary loss** : The above statistical report shows that increasing number of student loan default is a threat and huge loss for Banks, Credit Unions or any Lending organizations. We see that billions of dollars are not paid or not paid on time in the student loan business. Any prevention of the default rate will save a significant amount of money of the leding organizations. ***The success criteria of this model is to predict the default risk by > 95% true prediction.***
 
 * **Business growth** : The tool/model will generate a monthly and annual report so that they can measure the business performance metrics.
 
