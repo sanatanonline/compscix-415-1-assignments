@@ -3,10 +3,10 @@ title: "Model Performance - Linear Regression"
 author: "Sanatan Das"
 date: "April 24, 2018"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     number_sections: yes
-    toc: yes
-  pdf_document:
     toc: yes
 ---
 
@@ -218,6 +218,9 @@ lm_4 <- lm(Drate ~ ProgLength, data = default_rates)
 glance(lm_4)
 
 ```
+
+**Conclusion:** From the above metrics, r.squared value is 0.2786509 and p-value is zero. *ProgLength* is a good predictor.
+
 ## Model evaluation on 'SchoolType' feature
 
 ```{r var15, eval=TRUE, echo=TRUE}
@@ -228,6 +231,8 @@ glance(lm_5)
 
 ```
 
+**Conclusion:** From the above metrics, r.squared value is 0.1726394 and p-value is zero. *ProgLength* is a good predictor.
+
 ## Model evaluation on 'Num' feature
 
 ```{r var16, eval=TRUE, echo=TRUE}
@@ -237,6 +242,9 @@ lm_6 <- lm(Drate ~ Num, data = default_rates)
 tidy(lm_6)
 
 ```
+
+**Conclusion:** *Num* feature can be considered as a predictor.
+
 ## Model evaluation on 'Denom' feature
 
 ```{r var17, eval=TRUE, echo=TRUE}
@@ -246,6 +254,8 @@ lm_7 <- lm(Drate ~ Denom, data = default_rates)
 tidy(lm_7)
 
 ```
+
+**Conclusion:** *Denom* feature can be considered as a predictor.
 
 ```{r var18, eval=FALSE, echo=FALSE}
 
@@ -264,10 +274,20 @@ lm_9 <- lm(Drate ~ EthnicCode, data = default_rates)
 glance(lm_9)
 
 ```
+**Conclusion:** From the above metrics, r.squared value is 0.03850229. *EthnicCode* is a good predictor.
 
 ## Final model evaluation
 
-```{r var20, eval=FALSE, echo=TRUE}
+```{r var20, eval=TRUE, echo=TRUE}
+
+# Final model usiing all features
+lm_0 <- lm(Drate ~ ProgLength + SchoolType + Num + Denom + EthnicCode, data = default_rates)
+summary(lm_0)
+plot(lm_0)
+
+```
+
+```{r var21, eval=FALSE, echo=TRUE}
 
 # Final model usiing all features
 lm_0 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
