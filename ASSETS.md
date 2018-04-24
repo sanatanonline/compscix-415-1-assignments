@@ -1,4 +1,4 @@
-# ASSETS of EFS project
+# ASSETS of EFS Project
 
 This markdown document contains the list of assets and artifactories produced during the different phases of this project.
 
