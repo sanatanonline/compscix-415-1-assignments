@@ -4,20 +4,31 @@ author: Sanatan Das
 date: April 25, 2018
 autosize: true
 
-First Slide
+What is ggvis
 ========================================================
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+A package for interactive data visualization to make it easier to explore data and communicate findings.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+It is a synthesis of ideas:
 
-Slide With Code
+- Grammar of graphics (ggplot2)
+- Reactivity and Interactivity (Shiny)
+- Data pipeline (dplyr)
+- Of the web (vega.js)
+
+Grammar of graphics
 ========================================================
 
-```{r}
-summary(cars)
+```{r, eval=TRUE, echo=TRUE, results='asis'}
+library(dplyr)
+library(ggvis)
+library(shiny)
+library(knitr)
+mtcars %>%
+  ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points() %>%
+  layer_smooths()
+
 ```
 
 Slide With Plot

@@ -1,0 +1,262 @@
+---
+title: "Introduction to ggvis"
+author: "Sanatan Das"
+date: "April 25, 2018"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(ggvis)
+library(shiny)
+library(knitr)
+
+```
+
+## Before We Start on ggvis
+
+Let's talk about ggplot2
+
+- Its the Grammar of Graphics
+- Creates in 2005 by Hadley Wickham
+- Well Documented
+- In 2014, shifts to maintenance mode (no more development)
+
+
+## What is ggvis?
+
+It is a synthesis of ideas:
+
+- Created in 2014 by Winston Chang
+- Grammar of Graphics (ggplot2)
+- Data Pipeline and Data Transformation (dplyr)
+- Reactivity and Interactivity (shiny)
+- Web (vega.js)
+
+
+## Grammar of Graphics
+
+```{r var1, echo=TRUE, eval=TRUE}
+mtcars %>% # data
+  ggvis(x = ~wt, y = ~mpg) %>% # axis
+  layer_points() %>% # layer1
+  layer_smooths() # layer2
+
+```
+
+## Grammar of Graphics
+
+```{r var2, echo=TRUE, eval=TRUE}
+mtcars %>% # data
+  ggvis(x = ~wt, y = ~mpg, fill = ~factor(cyl)) %>% 
+  # axis + property mapping
+  layer_points()# layer1
+
+```
+
+## Grammar of Graphics
+
+```{r var3, echo=TRUE, eval=TRUE}
+mtcars %>% 
+  ggvis(~mpg, ~disp, shape = ~factor(cyl)) %>% 
+  layer_points()
+
+```
+
+## Grammar of Graphics
+
+```{r var4, echo=TRUE, eval=TRUE}
+n <- 10000
+gamma_samp <- tibble(x = rgamma(n, shape = 1, scale = 2))
+gamma_samp %>% # data
+  # axis + property mapping
+  ggvis(x = ~x) %>% 
+  layer_histograms()# layer1
+
+```
+
+## Grammar of Graphics
+
+**Layers**
+
+- Simple layers : *layer_points(), layer_paths(), layer_ribbons(), layer_rects(), layer_text()*
+
+- Compound layers : *layer_lines(), layer_histograms(), layer_freqpolys(), layer_smooths()* 
+
+## Examples
+
+```{r varN1, echo=TRUE, eval=TRUE}
+
+df <- data.frame(x = 1:10, y = runif(10))
+df %>% ggvis(~x, ~y) %>% layer_paths()
+
+```
+
+## Examples
+
+```{r varN2, echo=TRUE, eval=TRUE}
+
+t <- seq(0, 2 * pi, length = 100)
+df <- data.frame(x = sin(t), y = cos(t))
+df %>% ggvis(~x, ~y) %>% layer_paths(fill := "red")
+
+```
+
+## Examples
+
+```{r varN3, echo=TRUE, eval=TRUE}
+
+df <- data.frame(x = 1:10, y = runif(10))
+df %>% ggvis(~x, ~y) %>% layer_ribbons()
+
+```
+
+## Examples
+
+```{r varN4, echo=TRUE, eval=TRUE}
+
+df %>% ggvis(~x, ~y + 0.1, y2 = ~y - 0.1) %>% layer_ribbons()
+
+```
+
+## Examples
+
+```{r varN5, echo=TRUE, eval=TRUE}
+
+set.seed(1014)
+df <- data.frame(x1 = runif(5), x2 = runif(5), y1 = runif(5), y2 = runif(5))
+df %>% ggvis(~x1, ~y1, x2 = ~x2, y2 = ~y2, fillOpacity := 0.1) %>% layer_rects()
+
+```
+
+## Examples
+
+```{r varN6, echo=TRUE, eval=TRUE}
+
+df <- data.frame(x = 3:1, y = c(1, 3, 2), label = c("a", "b", "c"))
+df %>% ggvis(~x, ~y, text := ~label) %>% layer_text()
+
+```
+
+## Examples
+
+```{r varN7, echo=TRUE, eval=TRUE}
+
+df %>% ggvis(~x, ~y, text := ~label) %>% layer_text(fontSize := 50)
+
+```
+
+## Data Pipeline
+
+Each ggvis function takes a visualization object as an input and returns a modified visualization object as output.
+
+```{r var5, echo=TRUE, eval=TRUE}
+mtcars %>% # data
+  ggvis(x = ~wt, y = ~mpg) %>% # create ggvis object
+  layer_points() %>% # passit to next layer
+  layer_smooths()
+
+```
+
+## Data Transformation
+
+```{r var6, echo=TRUE, eval=TRUE}
+mtcars %>%
+  ggvis(x = ~mpg, y = ~disp) %>%
+  # convert engine displacment to litres
+  mutate(disp = disp / 61.0237) %>% 
+  layer_points()
+
+```
+
+## Reactivity and Interactivity
+
+**How it works?**
+
+- In "regular" programming, function call happens once. The function takes an input and returns an output.
+
+- In functional reactive programming, a reactive can use a value from another reactive; this creates a dependency graph of reactives. The reactives persist.
+
+- When the value of an ancestor node changes, it triggers a recomputation of all its descendants.
+
+
+## Reactivity and Interactivity
+
+```{r var7, echo=TRUE, eval=TRUE}
+n <- 10000
+gamma_samp <- tibble(x = rgamma(n, shape = 1, scale = 2))
+gamma_samp %>% # data
+  ggvis(x = ~x) %>% # axis + property mapping
+  layer_histograms(width = 
+                     input_slider(min = 1, max = 20, value = 11))# layer1
+
+```
+
+## Reactivity and Interactivity
+
+```{r var8, echo=TRUE, eval=TRUE}
+
+mtcars %>% 
+  ggvis(~wt, ~mpg, 
+    size := input_slider(10, 100),
+    opacity := input_slider(0, 1)
+  ) %>% 
+  layer_points()
+
+```
+
+## Web
+
+```{r var9, echo=TRUE, eval=TRUE}
+
+## Run these examples only in interactive R sessions
+if (interactive()) {
+
+all_values <- function(x) {
+  if(is.null(x)) return(NULL)
+  paste0(names(x), ": ", format(x), collapse = "<br />")
+}
+
+base <- mtcars %>% ggvis(x = ~wt, y = ~mpg) %>%
+  layer_points()
+base %>% add_tooltip(all_values, "hover")
+base %>% add_tooltip(all_values, "click")
+
+# The data sent from client to the server 
+# contains only the data columns that
+# are used in the plot. If you want to get 
+# other columns of data, you should
+# to use a key to line up the item 
+# from the plot with a row in the data.
+mtc <- mtcars
+mtc$id <- 1:nrow(mtc)  # Add an id column to use ask the key
+
+all_values <- function(x) {
+  if(is.null(x)) return(NULL)
+  row <- mtc[mtc$id == x$id, ]
+  paste0(names(row), ": ", format(row), collapse = "<br />")
+}
+
+mtc %>% ggvis(x = ~wt, y = ~mpg, key := ~id) %>%
+  layer_points() %>%
+  add_tooltip(all_values, "hover")
+
+}
+
+```
+
+## The Future
+
+The package is still in development state. Think before moving it to production.
+
+Upcoming features :-
+
+- faceting
+- zooming and panning
+- performance improvement etc...
+
