@@ -96,7 +96,7 @@
 
 <body style="opacity: 0">
 
-<slides>
+<slides class="layout-widescreen">
 
   <slide class="title-slide segue nobackground">
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -108,22 +108,22 @@
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Before We Start on ggvis</h2></hgroup><article  id="before-we-start-on-ggvis">
+<slide class=""><hgroup><h2>Before We Start on ggvis</h2></hgroup><article  id="before-we-start-on-ggvis" class="smaller ">
 
 <p>Let&#39;s talk about ggplot2</p>
 
-<ul>
-<li>Its the Grammar of Graphics</li>
-<li>Creates in 2005 by Hadley Wickham</li>
+<ul class = 'build'>
+<li>It&#39;s the Grammar of Graphics</li>
+<li>Created in 2005 by Hadley Wickham</li>
 <li>Well Documented</li>
 <li>In 2014, shifts to maintenance mode (no more development)</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>What is ggvis?</h2></hgroup><article  id="what-is-ggvis">
+</article></slide><slide class=""><hgroup><h2>What is ggvis?</h2></hgroup><article  id="what-is-ggvis" class="smaller ">
 
 <p>It is a synthesis of ideas:</p>
 
-<ul>
+<ul class = 'build'>
 <li>Created in 2014 by Winston Chang</li>
 <li>Grammar of Graphics (ggplot2)</li>
 <li>Data Pipeline and Data Transformation (dplyr)</li>
@@ -131,34 +131,34 @@
 <li>Web (vega.js)</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics">
+</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;% # data
   ggvis(x = ~wt, y = ~mpg) %&gt;% # axis
   layer_points() %&gt;% # layer1
   layer_smooths() # layer2</pre>
 
-<div id="plot_id900645230-container" class="ggvis-output-container">
-<div id="plot_id900645230" class="ggvis-output"></div>
+<div id="plot_id471970670-container" class="ggvis-output-container">
+<div id="plot_id471970670" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id900645230_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id900645230" data-renderer="svg">SVG</a>
+<a id="plot_id471970670_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id471970670" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id900645230_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id900645230" data-renderer="canvas">Canvas</a>
+<a id="plot_id471970670_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id471970670" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id900645230_download" class="ggvis-download" data-plot-id="plot_id900645230">Download</a>
+<a id="plot_id471970670_download" class="ggvis-download" data-plot-id="plot_id471970670">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id900645230_spec = {
+var plot_id471970670_spec = {
   "data": [
     {
       "name": ".0",
@@ -322,37 +322,37 @@ var plot_id900645230_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id900645230").parseSpec(plot_id900645230_spec);
+ggvis.getPlot("plot_id471970670").parseSpec(plot_id471970670_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-1">
+</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-1" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;% # data
   ggvis(x = ~wt, y = ~mpg, fill = ~factor(cyl)) %&gt;% 
   # axis + property mapping
   layer_points()# layer1</pre>
 
-<div id="plot_id993575311-container" class="ggvis-output-container">
-<div id="plot_id993575311" class="ggvis-output"></div>
+<div id="plot_id657056772-container" class="ggvis-output-container">
+<div id="plot_id657056772" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id993575311_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id993575311" data-renderer="svg">SVG</a>
+<a id="plot_id657056772_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id657056772" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id993575311_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id993575311" data-renderer="canvas">Canvas</a>
+<a id="plot_id657056772_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id657056772" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id993575311_download" class="ggvis-download" data-plot-id="plot_id993575311">Download</a>
+<a id="plot_id657056772_download" class="ggvis-download" data-plot-id="plot_id657056772">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id993575311_spec = {
+var plot_id657056772_spec = {
   "data": [
     {
       "name": ".0",
@@ -499,36 +499,36 @@ var plot_id993575311_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id993575311").parseSpec(plot_id993575311_spec);
+ggvis.getPlot("plot_id657056772").parseSpec(plot_id657056772_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-2">
+</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-2" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;% 
   ggvis(~mpg, ~disp, shape = ~factor(cyl)) %&gt;% 
   layer_points()</pre>
 
-<div id="plot_id582644337-container" class="ggvis-output-container">
-<div id="plot_id582644337" class="ggvis-output"></div>
+<div id="plot_id888633801-container" class="ggvis-output-container">
+<div id="plot_id888633801" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id582644337_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id582644337" data-renderer="svg">SVG</a>
+<a id="plot_id888633801_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id888633801" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id582644337_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id582644337" data-renderer="canvas">Canvas</a>
+<a id="plot_id888633801_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id888633801" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id582644337_download" class="ggvis-download" data-plot-id="plot_id582644337">Download</a>
+<a id="plot_id888633801_download" class="ggvis-download" data-plot-id="plot_id888633801">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id582644337_spec = {
+var plot_id888633801_spec = {
   "data": [
     {
       "name": ".0",
@@ -678,10 +678,10 @@ var plot_id582644337_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id582644337").parseSpec(plot_id582644337_spec);
+ggvis.getPlot("plot_id888633801").parseSpec(plot_id888633801_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-3">
+</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-3" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>n &lt;- 10000
 gamma_samp &lt;- tibble(x = rgamma(n, shape = 1, scale = 2))
@@ -690,29 +690,27 @@ gamma_samp %&gt;% # data
   ggvis(x = ~x) %&gt;% 
   layer_histograms()# layer1</pre>
 
-<pre >## Guessing width = 0.5 # range / 37</pre>
-
-<div id="plot_id478905042-container" class="ggvis-output-container">
-<div id="plot_id478905042" class="ggvis-output"></div>
+<div id="plot_id368212713-container" class="ggvis-output-container">
+<div id="plot_id368212713" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id478905042_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id478905042" data-renderer="svg">SVG</a>
+<a id="plot_id368212713_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id368212713" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id478905042_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id478905042" data-renderer="canvas">Canvas</a>
+<a id="plot_id368212713_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id368212713" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id478905042_download" class="ggvis-download" data-plot-id="plot_id478905042">Download</a>
+<a id="plot_id368212713_download" class="ggvis-download" data-plot-id="plot_id368212713">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id478905042_spec = {
+var plot_id368212713_spec = {
   "data": [
     {
       "name": ".0/bin1/stack2",
@@ -725,7 +723,7 @@ var plot_id478905042_spec = {
           "stack_lwr_": "number"
         }
       },
-      "values": "\"xmin_\",\"xmax_\",\"stack_upr_\",\"stack_lwr_\"\n-0.25,0.25,1165,0\n0.25,0.75,1930,0\n0.75,1.25,1574,0\n1.25,1.75,1111,0\n1.75,2.25,948,0\n2.25,2.75,730,0\n2.75,3.25,573,0\n3.25,3.75,428,0\n3.75,4.25,353,0\n4.25,4.75,272,0\n4.75,5.25,213,0\n5.25,5.75,159,0\n5.75,6.25,112,0\n6.25,6.75,102,0\n6.75,7.25,67,0\n7.25,7.75,57,0\n7.75,8.25,54,0\n8.25,8.75,30,0\n8.75,9.25,27,0\n9.25,9.75,16,0\n9.75,10.25,22,0\n10.25,10.75,22,0\n10.75,11.25,7,0\n11.25,11.75,8,0\n11.75,12.25,1,0\n12.25,12.75,5,0\n12.75,13.25,0,0\n13.25,13.75,1,0\n13.75,14.25,1,0\n14.25,14.75,4,0\n14.75,15.25,2,0\n15.25,15.75,2,0\n15.75,16.25,1,0\n16.25,16.75,0,0\n16.75,17.25,1,0\n17.25,17.75,1,0\n17.75,18.25,0,0\n18.25,18.75,1,0"
+      "values": "\"xmin_\",\"xmax_\",\"stack_upr_\",\"stack_lwr_\"\n-0.25,0.25,1181,0\n0.25,0.75,1911,0\n0.75,1.25,1488,0\n1.25,1.75,1226,0\n1.75,2.25,905,0\n2.25,2.75,712,0\n2.75,3.25,569,0\n3.25,3.75,429,0\n3.75,4.25,362,0\n4.25,4.75,257,0\n4.75,5.25,220,0\n5.25,5.75,176,0\n5.75,6.25,131,0\n6.25,6.75,88,0\n6.75,7.25,90,0\n7.25,7.75,59,0\n7.75,8.25,38,0\n8.25,8.75,41,0\n8.75,9.25,23,0\n9.25,9.75,24,0\n9.75,10.25,23,0\n10.25,10.75,6,0\n10.75,11.25,10,0\n11.25,11.75,4,0\n11.75,12.25,6,0\n12.25,12.75,6,0\n12.75,13.25,4,0\n13.25,13.75,6,0\n13.75,14.25,1,0\n14.25,14.75,1,0\n14.75,15.25,1,0\n15.25,15.75,1,0\n15.75,16.25,0,0\n16.25,16.75,0,0\n16.75,17.25,0,0\n17.25,17.75,1,0"
     },
     {
       "name": "scale/x",
@@ -735,7 +733,7 @@ var plot_id478905042_spec = {
           "domain": "number"
         }
       },
-      "values": "\"domain\"\n-1.2\n19.7"
+      "values": "\"domain\"\n-1.15\n18.65"
     },
     {
       "name": "scale/y",
@@ -745,7 +743,7 @@ var plot_id478905042_spec = {
           "domain": "number"
         }
       },
-      "values": "\"domain\"\n0\n2026.5"
+      "values": "\"domain\"\n0\n2006.55"
     }
   ],
   "scales": [
@@ -843,44 +841,44 @@ var plot_id478905042_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id478905042").parseSpec(plot_id478905042_spec);
+ggvis.getPlot("plot_id368212713").parseSpec(plot_id368212713_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-4">
+</article></slide><slide class=""><hgroup><h2>Grammar of Graphics</h2></hgroup><article  id="grammar-of-graphics-4" class="smaller ">
 
 <p><strong>Layers</strong></p>
 
-<ul>
-<li><p>Simple layers : <em>layer_points(), layer_paths(), layer_ribbons(), layer_rects(), layer_text()</em></p></li>
-<li><p>Compound layers : <em>layer_lines(), layer_histograms(), layer_freqpolys(), layer_smooths()</em></p></li>
+<ul class = 'build'>
+<li><p>Simple layers : layer_points(), layer_paths(), layer_ribbons(), layer_rects(), layer_text()</p></li>
+<li><p>Compound layers : layer_lines(), layer_histograms(), layer_freqpolys(), layer_smooths()</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>df &lt;- data.frame(x = 1:10, y = runif(10))
 df %&gt;% ggvis(~x, ~y) %&gt;% layer_paths()</pre>
 
-<div id="plot_id852376763-container" class="ggvis-output-container">
-<div id="plot_id852376763" class="ggvis-output"></div>
+<div id="plot_id429775615-container" class="ggvis-output-container">
+<div id="plot_id429775615" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id852376763_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id852376763" data-renderer="svg">SVG</a>
+<a id="plot_id429775615_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id429775615" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id852376763_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id852376763" data-renderer="canvas">Canvas</a>
+<a id="plot_id429775615_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id429775615" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id852376763_download" class="ggvis-download" data-plot-id="plot_id852376763">Download</a>
+<a id="plot_id429775615_download" class="ggvis-download" data-plot-id="plot_id429775615">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id852376763_spec = {
+var plot_id429775615_spec = {
   "data": [
     {
       "name": ".0",
@@ -891,7 +889,7 @@ var plot_id852376763_spec = {
           "y": "number"
         }
       },
-      "values": "\"x\",\"y\"\n1,0.827376124681905\n2,0.889200189849362\n3,0.947600679472089\n4,0.684939807048067\n5,0.0784313429612666\n6,0.747476401505992\n7,0.340979871805757\n8,0.164195215329528\n9,0.681778145488352\n10,0.242906613508239"
+      "values": "\"x\",\"y\"\n1,0.640795047860593\n2,0.890005049994215\n3,0.8598846886307\n4,0.772582462988794\n5,0.90434051072225\n6,0.359504534630105\n7,0.403335968032479\n8,0.828890067525208\n9,0.0506112384609878\n10,0.890740578528494"
     },
     {
       "name": "scale/x",
@@ -911,7 +909,7 @@ var plot_id852376763_spec = {
           "domain": "number"
         }
       },
-      "values": "\"domain\"\n0.0349728761357255\n0.99105914629763"
+      "values": "\"domain\"\n0.00792477484792471\n0.947026974335313"
     }
   ],
   "scales": [
@@ -998,36 +996,36 @@ var plot_id852376763_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id852376763").parseSpec(plot_id852376763_spec);
+ggvis.getPlot("plot_id429775615").parseSpec(plot_id429775615_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-1">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-1" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>t &lt;- seq(0, 2 * pi, length = 100)
 df &lt;- data.frame(x = sin(t), y = cos(t))
 df %&gt;% ggvis(~x, ~y) %&gt;% layer_paths(fill := &quot;red&quot;)</pre>
 
-<div id="plot_id846236069-container" class="ggvis-output-container">
-<div id="plot_id846236069" class="ggvis-output"></div>
+<div id="plot_id687112409-container" class="ggvis-output-container">
+<div id="plot_id687112409" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id846236069_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id846236069" data-renderer="svg">SVG</a>
+<a id="plot_id687112409_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id687112409" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id846236069_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id846236069" data-renderer="canvas">Canvas</a>
+<a id="plot_id687112409_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id687112409" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id846236069_download" class="ggvis-download" data-plot-id="plot_id846236069">Download</a>
+<a id="plot_id687112409_download" class="ggvis-download" data-plot-id="plot_id687112409">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id846236069_spec = {
+var plot_id687112409_spec = {
   "data": [
     {
       "name": ".0",
@@ -1038,7 +1036,7 @@ var plot_id846236069_spec = {
           "y": "number"
         }
       },
-      "values": "\"x\",\"y\"\n0,1\n0.0634239196565645,0.997986676471884\n0.126592453573749,0.991954812830795\n0.18925124436041,0.981928697262707\n0.251147987181079,0.967948701396356\n0.312033445698487,0.950071117740945\n0.371662455660328,0.928367933016073\n0.429794912089172,0.902926538286621\n0.486196736100469,0.873849377069785\n0.540640817455598,0.841253532831181\n0.59290792905464,0.805270257531059\n0.642787609686539,0.766044443118978\n0.690079011482112,0.72373403810507\n0.734591708657533,0.678509411557132\n0.776146464291757,0.630552667084523\n0.814575952050336,0.580056909571198\n0.849725429949514,0.527225467610502\n0.881453363447582,0.472271074772683\n0.909631995354518,0.415415013001886\n0.934147860265107,0.356886221591872\n0.954902241444074,0.296920375328275\n0.971811568323542,0.235758935509427\n0.984807753012208,0.17364817766693\n0.993838464461254,0.110838199901011\n0.998867339183008,0.0475819158237422\n0.999874127673875,-0.015865963834808\n0.996854775951942,-0.0792499568567885\n0.989821441880933,-0.142314838273285\n0.978802446214779,-0.204806668065191\n0.963842158559942,-0.266473813690035\n0.945000818714668,-0.327067963317422\n0.922354294104581,-0.386345125693129\n0.895993774291336,-0.444066612605774\n0.866025403784438,-0.5\n0.832569854634771,-0.55392006386611\n0.795761840530832,-0.605609687137667\n0.755749574354258,-0.654860733945285\n0.712694171378863,-0.701474887706321\n0.666769000516292,-0.745264449675755\n0.618158986220605,-0.786053094742788\n0.567059863862771,-0.823676581429833\n0.513677391573406,-0.857983413234977\n0.458226521727411,-0.888835448654923\n0.400930535406614,-0.91610845743207\n0.342020143325669,-0.939692620785908\n0.28173255684143,-0.959492973614497\n0.220310532786541,-0.975429786885407\n0.15800139597335,-0.987438888676394\n0.0950560433041824,-0.995471922573085\n0.0317279334980677,-0.999496542383185\n-0.0317279334980679,-0.999496542383185\n-0.0950560433041826,-0.995471922573085\n-0.15800139597335,-0.987438888676394\n-0.220310532786541,-0.975429786885407\n-0.28173255684143,-0.959492973614497\n-0.342020143325669,-0.939692620785908\n-0.400930535406614,-0.91610845743207\n-0.45822652172741,-0.888835448654923\n-0.513677391573406,-0.857983413234977\n-0.567059863862771,-0.823676581429833\n-0.618158986220605,-0.786053094742787\n-0.666769000516292,-0.745264449675755\n-0.712694171378863,-0.701474887706321\n-0.755749574354258,-0.654860733945285\n-0.795761840530832,-0.605609687137667\n-0.832569854634771,-0.55392006386611\n-0.866025403784439,-0.5\n-0.895993774291336,-0.444066612605774\n-0.922354294104581,-0.386345125693129\n-0.945000818714668,-0.327067963317422\n-0.963842158559942,-0.266473813690035\n-0.978802446214779,-0.204806668065191\n-0.989821441880933,-0.142314838273285\n-0.996854775951942,-0.0792499568567888\n-0.999874127673875,-0.0158659638348076\n-0.998867339183008,0.0475819158237424\n-0.993838464461254,0.110838199901011\n-0.984807753012208,0.17364817766693\n-0.971811568323542,0.235758935509427\n-0.954902241444074,0.296920375328275\n-0.934147860265107,0.356886221591872\n-0.909631995354518,0.415415013001887\n-0.881453363447582,0.472271074772683\n-0.849725429949514,0.527225467610502\n-0.814575952050336,0.580056909571198\n-0.776146464291757,0.630552667084523\n-0.734591708657533,0.678509411557132\n-0.690079011482112,0.72373403810507\n-0.64278760968654,0.766044443118978\n-0.59290792905464,0.805270257531059\n-0.540640817455597,0.841253532831181\n-0.486196736100469,0.873849377069785\n-0.429794912089172,0.902926538286621\n-0.371662455660327,0.928367933016073\n-0.312033445698487,0.950071117740945\n-0.251147987181079,0.967948701396356\n-0.18925124436041,0.981928697262707\n-0.126592453573749,0.991954812830795\n-0.0634239196565645,0.997986676471884\n-2.44929359829471e-16,1"
+      "values": "\"x\",\"y\"\n0,1\n0.0634239196565645,0.997986676471884\n0.126592453573749,0.991954812830795\n0.18925124436041,0.981928697262707\n0.251147987181079,0.967948701396356\n0.312033445698487,0.950071117740945\n0.371662455660328,0.928367933016073\n0.429794912089172,0.902926538286621\n0.486196736100469,0.873849377069785\n0.540640817455598,0.841253532831181\n0.59290792905464,0.805270257531059\n0.642787609686539,0.766044443118978\n0.690079011482112,0.72373403810507\n0.734591708657533,0.678509411557132\n0.776146464291757,0.630552667084523\n0.814575952050336,0.580056909571198\n0.849725429949514,0.527225467610502\n0.881453363447582,0.472271074772683\n0.909631995354518,0.415415013001886\n0.934147860265107,0.356886221591872\n0.954902241444074,0.296920375328275\n0.971811568323542,0.235758935509427\n0.984807753012208,0.17364817766693\n0.993838464461254,0.110838199901011\n0.998867339183008,0.0475819158237422\n0.999874127673875,-0.015865963834808\n0.996854775951942,-0.0792499568567885\n0.989821441880933,-0.142314838273285\n0.978802446214779,-0.204806668065191\n0.963842158559942,-0.266473813690035\n0.945000818714668,-0.327067963317422\n0.922354294104581,-0.386345125693129\n0.895993774291336,-0.444066612605774\n0.866025403784438,-0.5\n0.832569854634771,-0.55392006386611\n0.795761840530832,-0.605609687137667\n0.755749574354258,-0.654860733945285\n0.712694171378863,-0.701474887706321\n0.666769000516292,-0.745264449675755\n0.618158986220605,-0.786053094742788\n0.567059863862771,-0.823676581429833\n0.513677391573406,-0.857983413234977\n0.458226521727411,-0.888835448654923\n0.400930535406614,-0.91610845743207\n0.342020143325669,-0.939692620785908\n0.28173255684143,-0.959492973614497\n0.220310532786541,-0.975429786885407\n0.15800139597335,-0.987438888676394\n0.0950560433041824,-0.995471922573085\n0.0317279334980677,-0.999496542383185\n-0.0317279334980679,-0.999496542383185\n-0.0950560433041826,-0.995471922573085\n-0.15800139597335,-0.987438888676394\n-0.220310532786541,-0.975429786885407\n-0.28173255684143,-0.959492973614497\n-0.342020143325669,-0.939692620785908\n-0.400930535406614,-0.91610845743207\n-0.45822652172741,-0.888835448654923\n-0.513677391573406,-0.857983413234977\n-0.567059863862771,-0.823676581429833\n-0.618158986220605,-0.786053094742787\n-0.666769000516292,-0.745264449675755\n-0.712694171378863,-0.701474887706321\n-0.755749574354258,-0.654860733945285\n-0.795761840530832,-0.605609687137667\n-0.832569854634771,-0.55392006386611\n-0.866025403784439,-0.5\n-0.895993774291336,-0.444066612605774\n-0.922354294104581,-0.386345125693129\n-0.945000818714668,-0.327067963317422\n-0.963842158559942,-0.266473813690035\n-0.978802446214779,-0.204806668065191\n-0.989821441880933,-0.142314838273285\n-0.996854775951942,-0.0792499568567888\n-0.999874127673875,-0.0158659638348076\n-0.998867339183008,0.0475819158237424\n-0.993838464461254,0.110838199901011\n-0.984807753012208,0.17364817766693\n-0.971811568323542,0.235758935509427\n-0.954902241444074,0.296920375328275\n-0.934147860265107,0.356886221591872\n-0.909631995354518,0.415415013001887\n-0.881453363447582,0.472271074772683\n-0.849725429949514,0.527225467610502\n-0.814575952050336,0.580056909571198\n-0.776146464291757,0.630552667084523\n-0.734591708657533,0.678509411557132\n-0.690079011482112,0.72373403810507\n-0.64278760968654,0.766044443118978\n-0.59290792905464,0.805270257531059\n-0.540640817455597,0.841253532831181\n-0.486196736100469,0.873849377069785\n-0.429794912089172,0.902926538286621\n-0.371662455660327,0.928367933016073\n-0.312033445698487,0.950071117740945\n-0.251147987181079,0.967948701396356\n-0.18925124436041,0.981928697262707\n-0.126592453573749,0.991954812830795\n-0.0634239196565645,0.997986676471884\n-2.44921270764475e-16,1"
     },
     {
       "name": "scale/x",
@@ -1148,35 +1146,35 @@ var plot_id846236069_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id846236069").parseSpec(plot_id846236069_spec);
+ggvis.getPlot("plot_id687112409").parseSpec(plot_id687112409_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-2">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-2" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>df &lt;- data.frame(x = 1:10, y = runif(10))
 df %&gt;% ggvis(~x, ~y) %&gt;% layer_ribbons()</pre>
 
-<div id="plot_id580275970-container" class="ggvis-output-container">
-<div id="plot_id580275970" class="ggvis-output"></div>
+<div id="plot_id136354554-container" class="ggvis-output-container">
+<div id="plot_id136354554" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id580275970_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id580275970" data-renderer="svg">SVG</a>
+<a id="plot_id136354554_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id136354554" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id580275970_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id580275970" data-renderer="canvas">Canvas</a>
+<a id="plot_id136354554_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id136354554" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id580275970_download" class="ggvis-download" data-plot-id="plot_id580275970">Download</a>
+<a id="plot_id136354554_download" class="ggvis-download" data-plot-id="plot_id136354554">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id580275970_spec = {
+var plot_id136354554_spec = {
   "data": [
     {
       "name": ".0",
@@ -1187,7 +1185,7 @@ var plot_id580275970_spec = {
           "y": "number"
         }
       },
-      "values": "\"x\",\"y\"\n1,0.290793498745188\n2,0.372119291685522\n3,0.15763202146627\n4,0.521402878686786\n5,0.169365049107\n6,0.579266738845035\n7,0.49429746135138\n8,0.932714582188055\n9,0.982943556737155\n10,0.646426314953715"
+      "values": "\"x\",\"y\"\n1,0.905967985047027\n2,0.89436261751689\n3,0.50977346370928\n4,0.368594388943166\n5,0.0972253479994833\n6,0.264188477536663\n7,0.276604066370055\n8,0.941088465740904\n9,0.913447902305052\n10,0.975854622432962"
     },
     {
       "name": "scale/x",
@@ -1207,7 +1205,7 @@ var plot_id580275970_spec = {
           "domain": "number"
         }
       },
-      "values": "\"domain\"\n0.116366444702726\n1.0242091335007"
+      "values": "\"domain\"\n0.0532938842778094\n1.01978608615464"
     }
   ],
   "scales": [
@@ -1294,34 +1292,34 @@ var plot_id580275970_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id580275970").parseSpec(plot_id580275970_spec);
+ggvis.getPlot("plot_id136354554").parseSpec(plot_id136354554_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-3">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-3" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>df %&gt;% ggvis(~x, ~y + 0.1, y2 = ~y - 0.1) %&gt;% layer_ribbons()</pre>
 
-<div id="plot_id340516857-container" class="ggvis-output-container">
-<div id="plot_id340516857" class="ggvis-output"></div>
+<div id="plot_id293194461-container" class="ggvis-output-container">
+<div id="plot_id293194461" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id340516857_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id340516857" data-renderer="svg">SVG</a>
+<a id="plot_id293194461_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id293194461" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id340516857_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id340516857" data-renderer="canvas">Canvas</a>
+<a id="plot_id293194461_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id293194461" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id340516857_download" class="ggvis-download" data-plot-id="plot_id340516857">Download</a>
+<a id="plot_id293194461_download" class="ggvis-download" data-plot-id="plot_id293194461">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id340516857_spec = {
+var plot_id293194461_spec = {
   "data": [
     {
       "name": ".0",
@@ -1333,7 +1331,7 @@ var plot_id340516857_spec = {
           "y + 0.1": "number"
         }
       },
-      "values": "\"y - 0.1\",\"x\",\"y + 0.1\"\n0.190793498745188,1,0.390793498745188\n0.272119291685522,2,0.472119291685522\n0.0576320214662701,3,0.25763202146627\n0.421402878686786,4,0.621402878686786\n0.0693650491070002,5,0.269365049107\n0.479266738845035,6,0.679266738845035\n0.39429746135138,7,0.59429746135138\n0.832714582188055,8,1.03271458218806\n0.882943556737155,9,1.08294355673715\n0.546426314953715,10,0.746426314953715"
+      "values": "\"y - 0.1\",\"x\",\"y + 0.1\"\n0.805967985047027,1,1.00596798504703\n0.79436261751689,2,0.99436261751689\n0.40977346370928,3,0.60977346370928\n0.268594388943166,4,0.468594388943166\n-0.00277465200051666,5,0.197225347999483\n0.164188477536663,6,0.364188477536663\n0.176604066370055,7,0.376604066370055\n0.841088465740904,8,1.0410884657409\n0.813447902305052,9,1.01344790230505\n0.875854622432962,10,1.07585462243296"
     },
     {
       "name": "scale/x",
@@ -1353,7 +1351,7 @@ var plot_id340516857_spec = {
           "domain": "number"
         }
       },
-      "values": "\"domain\"\n0.00636644470272584\n1.1342091335007"
+      "values": "\"domain\"\n-0.0567061157221906\n1.12978608615464"
     }
   ],
   "scales": [
@@ -1444,10 +1442,10 @@ var plot_id340516857_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id340516857").parseSpec(plot_id340516857_spec);
+ggvis.getPlot("plot_id293194461").parseSpec(plot_id293194461_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-4">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-4" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>set.seed(1014)
 df &lt;- data.frame(x1 = runif(5), x2 = runif(5), y1 = runif(5), y2 = runif(5))
@@ -1610,7 +1608,7 @@ var plot_id360903065_spec = {
 ggvis.getPlot("plot_id360903065").parseSpec(plot_id360903065_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-5">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-5" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>df &lt;- data.frame(x = 3:1, y = c(1, 3, 2), label = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))
 df %&gt;% ggvis(~x, ~y, text := ~label) %&gt;% layer_text()</pre>
@@ -1759,7 +1757,7 @@ var plot_id710542383_spec = {
 ggvis.getPlot("plot_id710542383").parseSpec(plot_id710542383_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-6">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples-6" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>df %&gt;% ggvis(~x, ~y, text := ~label) %&gt;% layer_text(fontSize := 50)</pre>
 
@@ -1910,13 +1908,13 @@ var plot_id761787638_spec = {
 ggvis.getPlot("plot_id761787638").parseSpec(plot_id761787638_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Data Pipeline</h2></hgroup><article  id="data-pipeline">
+</article></slide><slide class=""><hgroup><h2>Data Pipeline</h2></hgroup><article  id="data-pipeline" class="smaller ">
 
 <p>Each ggvis function takes a visualization object as an input and returns a modified visualization object as output.</p>
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;% # data
   ggvis(x = ~wt, y = ~mpg) %&gt;% # create ggvis object
-  layer_points() %&gt;% # passit to next layer
+  layer_points() %&gt;% # pass it to next layer
   layer_smooths()</pre>
 
 <div id="plot_id276361059-container" class="ggvis-output-container">
@@ -2106,7 +2104,7 @@ var plot_id276361059_spec = {
 ggvis.getPlot("plot_id276361059").parseSpec(plot_id276361059_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Data Transformation</h2></hgroup><article  id="data-transformation">
+</article></slide><slide class=""><hgroup><h2>Data Transformation</h2></hgroup><article  id="data-transformation" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;%
   ggvis(x = ~mpg, y = ~disp) %&gt;%
@@ -2258,17 +2256,17 @@ var plot_id982485706_spec = {
 ggvis.getPlot("plot_id982485706").parseSpec(plot_id982485706_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity">
+</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity" class="smaller ">
 
 <p><strong>How it works?</strong></p>
 
-<ul>
+<ul class = 'build'>
 <li><p>In &quot;regular&quot; programming, function call happens once. The function takes an input and returns an output.</p></li>
 <li><p>In functional reactive programming, a reactive can use a value from another reactive; this creates a dependency graph of reactives. The reactives persist.</p></li>
 <li><p>When the value of an ancestor node changes, it triggers a recomputation of all its descendants.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity-1">
+</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity-1" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>n &lt;- 10000
 gamma_samp &lt;- tibble(x = rgamma(n, shape = 1, scale = 2))
@@ -2276,9 +2274,6 @@ gamma_samp %&gt;% # data
   ggvis(x = ~x) %&gt;% # axis + property mapping
   layer_histograms(width = 
                      input_slider(min = 1, max = 20, value = 11))# layer1</pre>
-
-<pre >## Warning: Can&#39;t output dynamic/interactive ggvis plots in a knitr document.
-## Generating a static (non-dynamic, non-interactive) version of the plot.</pre>
 
 <div id="plot_id260423503-container" class="ggvis-output-container">
 <div id="plot_id260423503" class="ggvis-output"></div>
@@ -2434,7 +2429,7 @@ var plot_id260423503_spec = {
 ggvis.getPlot("plot_id260423503").parseSpec(plot_id260423503_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity-2">
+</article></slide><slide class=""><hgroup><h2>Reactivity and Interactivity</h2></hgroup><article  id="reactivity-and-interactivity-2" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>mtcars %&gt;% 
   ggvis(~wt, ~mpg, 
@@ -2442,9 +2437,6 @@ ggvis.getPlot("plot_id260423503").parseSpec(plot_id260423503_spec);
     opacity := input_slider(0, 1)
   ) %&gt;% 
   layer_points()</pre>
-
-<pre >## Warning: Can&#39;t output dynamic/interactive ggvis plots in a knitr document.
-## Generating a static (non-dynamic, non-interactive) version of the plot.</pre>
 
 <div id="plot_id875490780-container" class="ggvis-output-container">
 <div id="plot_id875490780" class="ggvis-output"></div>
@@ -2595,7 +2587,7 @@ var plot_id875490780_spec = {
 ggvis.getPlot("plot_id875490780").parseSpec(plot_id875490780_spec);
 </script>
 
-</article></slide><slide class=""><hgroup><h2>Web</h2></hgroup><article  id="web">
+</article></slide><slide class=""><hgroup><h2>Web</h2></hgroup><article  id="web" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>## Run these examples only in interactive R sessions
 if (interactive()) {
@@ -2631,17 +2623,22 @@ mtc %&gt;% ggvis(x = ~wt, y = ~mpg, key := ~id) %&gt;%
 
 }</pre>
 
-</article></slide><slide class=""><hgroup><h2>The Future</h2></hgroup><article  id="the-future">
+</article></slide><slide class=""><hgroup><h2>The Future</h2></hgroup><article  id="the-future" class="smaller ">
 
-<p>The package is still in development state. Think before moving it to production.</p>
+<p><strong>Warning:</strong> The package is still in development state. Think before moving it to production.</p>
 
 <p>Upcoming features :-</p>
 
-<ul>
+<ul class = 'build'>
 <li>faceting</li>
 <li>zooming and panning</li>
 <li>performance improvement etc&#8230;</li>
-</ul></article></slide>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
+
+<div class="centered">
+<strong>Thank You</strong></div></article></slide>
 
 
   <slide class="backdrop"></slide>

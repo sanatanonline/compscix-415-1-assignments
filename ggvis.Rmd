@@ -3,27 +3,27 @@ title: "Introduction to ggvis"
 author: "Sanatan Das"
 date: "April 25, 2018"
 output:
-  ioslides_presentation: default
-  beamer_presentation: default
-  slidy_presentation: default
+  ioslides_presentation:
+    incremental: true
+    widescreen: true
+    smaller: true
 ---
 
 ```{r setup, include=FALSE}
-
 knitr::opts_chunk$set(echo = FALSE)
 library(dplyr)
 library(ggvis)
 library(shiny)
 library(knitr)
-
 ```
+
 
 ## Before We Start on ggvis
 
 Let's talk about ggplot2
 
-- Its the Grammar of Graphics
-- Creates in 2005 by Hadley Wickham
+- It's the Grammar of Graphics
+- Created in 2005 by Hadley Wickham
 - Well Documented
 - In 2014, shifts to maintenance mode (no more development)
 
@@ -41,93 +41,80 @@ It is a synthesis of ideas:
 
 ## Grammar of Graphics
 
-```{r var1, echo=TRUE, eval=TRUE}
+```{r var1, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 mtcars %>% # data
   ggvis(x = ~wt, y = ~mpg) %>% # axis
   layer_points() %>% # layer1
   layer_smooths() # layer2
-
 ```
 
 ## Grammar of Graphics
 
-```{r var2, echo=TRUE, eval=TRUE}
+```{r var2, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 mtcars %>% # data
   ggvis(x = ~wt, y = ~mpg, fill = ~factor(cyl)) %>% 
   # axis + property mapping
   layer_points()# layer1
-
 ```
 
 ## Grammar of Graphics
 
-```{r var3, echo=TRUE, eval=TRUE}
+```{r var3, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 mtcars %>% 
   ggvis(~mpg, ~disp, shape = ~factor(cyl)) %>% 
   layer_points()
-
 ```
 
 ## Grammar of Graphics
 
-```{r var4, echo=TRUE, eval=TRUE}
+```{r var4, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 n <- 10000
 gamma_samp <- tibble(x = rgamma(n, shape = 1, scale = 2))
 gamma_samp %>% # data
   # axis + property mapping
   ggvis(x = ~x) %>% 
   layer_histograms()# layer1
-
 ```
 
 ## Grammar of Graphics
 
 **Layers**
 
-- Simple layers : *layer_points(), layer_paths(), layer_ribbons(), layer_rects(), layer_text()*
+- Simple layers : layer_points(), layer_paths(), layer_ribbons(), layer_rects(), layer_text()
 
-- Compound layers : *layer_lines(), layer_histograms(), layer_freqpolys(), layer_smooths()* 
+- Compound layers : layer_lines(), layer_histograms(), layer_freqpolys(), layer_smooths()
 
 ## Examples
 
-```{r varN1, echo=TRUE, eval=TRUE}
-
+```{r varN1, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 df <- data.frame(x = 1:10, y = runif(10))
 df %>% ggvis(~x, ~y) %>% layer_paths()
-
 ```
 
 ## Examples
 
-```{r varN2, echo=TRUE, eval=TRUE}
-
+```{r varN2, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 t <- seq(0, 2 * pi, length = 100)
 df <- data.frame(x = sin(t), y = cos(t))
 df %>% ggvis(~x, ~y) %>% layer_paths(fill := "red")
-
 ```
 
 ## Examples
 
-```{r varN3, echo=TRUE, eval=TRUE}
-
+```{r varN3, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 df <- data.frame(x = 1:10, y = runif(10))
 df %>% ggvis(~x, ~y) %>% layer_ribbons()
-
 ```
 
 ## Examples
 
-```{r varN4, echo=TRUE, eval=TRUE}
-
+```{r varN4, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 df %>% ggvis(~x, ~y + 0.1, y2 = ~y - 0.1) %>% layer_ribbons()
-
 ```
 
 ## Examples
 
-```{r varN5, echo=TRUE, eval=TRUE}
-
+```{r varN5, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 set.seed(1014)
 df <- data.frame(x1 = runif(5), x2 = runif(5), y1 = runif(5), y2 = runif(5))
 df %>% ggvis(~x1, ~y1, x2 = ~x2, y2 = ~y2, fillOpacity := 0.1) %>% layer_rects()
@@ -136,42 +123,36 @@ df %>% ggvis(~x1, ~y1, x2 = ~x2, y2 = ~y2, fillOpacity := 0.1) %>% layer_rects()
 
 ## Examples
 
-```{r varN6, echo=TRUE, eval=TRUE}
-
+```{r varN6, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 df <- data.frame(x = 3:1, y = c(1, 3, 2), label = c("a", "b", "c"))
 df %>% ggvis(~x, ~y, text := ~label) %>% layer_text()
-
 ```
 
 ## Examples
 
-```{r varN7, echo=TRUE, eval=TRUE}
-
+```{r varN7, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 df %>% ggvis(~x, ~y, text := ~label) %>% layer_text(fontSize := 50)
-
 ```
 
 ## Data Pipeline
 
 Each ggvis function takes a visualization object as an input and returns a modified visualization object as output.
 
-```{r var5, echo=TRUE, eval=TRUE}
+```{r var5, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 mtcars %>% # data
   ggvis(x = ~wt, y = ~mpg) %>% # create ggvis object
-  layer_points() %>% # passit to next layer
+  layer_points() %>% # pass it to next layer
   layer_smooths()
-
 ```
 
 ## Data Transformation
 
-```{r var6, echo=TRUE, eval=TRUE}
+```{r var6, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 mtcars %>%
   ggvis(x = ~mpg, y = ~disp) %>%
   # convert engine displacment to litres
   mutate(disp = disp / 61.0237) %>% 
   layer_points()
-
 ```
 
 ## Reactivity and Interactivity
@@ -187,33 +168,29 @@ mtcars %>%
 
 ## Reactivity and Interactivity
 
-```{r var7, echo=TRUE, eval=TRUE}
+```{r var7, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 n <- 10000
 gamma_samp <- tibble(x = rgamma(n, shape = 1, scale = 2))
 gamma_samp %>% # data
   ggvis(x = ~x) %>% # axis + property mapping
   layer_histograms(width = 
                      input_slider(min = 1, max = 20, value = 11))# layer1
-
 ```
 
 ## Reactivity and Interactivity
 
-```{r var8, echo=TRUE, eval=TRUE}
-
+```{r var8, echo=TRUE, eval=TRUE, warning=FALSE}
 mtcars %>% 
   ggvis(~wt, ~mpg, 
     size := input_slider(10, 100),
     opacity := input_slider(0, 1)
   ) %>% 
   layer_points()
-
 ```
 
 ## Web
 
-```{r var9, echo=TRUE, eval=TRUE}
-
+```{r var9, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 ## Run these examples only in interactive R sessions
 if (interactive()) {
 
@@ -247,16 +224,18 @@ mtc %>% ggvis(x = ~wt, y = ~mpg, key := ~id) %>%
   add_tooltip(all_values, "hover")
 
 }
-
 ```
 
 ## The Future
 
-The package is still in development state. Think before moving it to production.
+**Warning:** The package is still in development state. Think before moving it to production.
 
 Upcoming features :-
 
 - faceting
 - zooming and panning
 - performance improvement etc...
+
+## 
+<div class="centered">**Thank You**</div>
 
