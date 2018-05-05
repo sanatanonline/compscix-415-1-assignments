@@ -8,6 +8,7 @@ output:
   html_document:
     number_sections: yes
     toc: yes
+urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
@@ -25,16 +26,16 @@ library(knitr)
 
 # Initial Data Analysis
 
-## Load the data
+## Load the Data
 
-```{r var1, eval=TRUE, echo=FALSE}
+```{r var1, eval=TRUE, echo=TRUE}
 
 # load the data set from excel file
 default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
 
 ```
 
-## Know your variables
+## The Variables
 
 ```{r var2, eval=TRUE, echo=TRUE}
 
@@ -47,7 +48,11 @@ glimpse(default_rates)
 
 (Data Definition : [Instructions for Using the Data Files](https://www2.ed.gov/offices/OSFAP/defaultmanagement/instructions.html))
 
-## Add factors
+## Problem Category (Regression)
+
+Our target variable is *default rate* or *drate* which is a numerical (double) variable. So our problem is categorically regression problem. We will create different kind of refression models to predict our data.
+
+## Predictors Data Types
 
 ```{r var3, eval=TRUE, echo=TRUE}
 
@@ -130,14 +135,16 @@ ggplot(aes(x = SchoolType, y = Drate), group=SchoolType) +
 
 ```{r var7, eval=TRUE, echo=TRUE}
 
-# plot the relationship between Prate (Type of rate was calculated for the institution) and the Default Rate (Bar Graph)
+# plot the relationship between Prate (Type of rate was calculated for the institution) 
+# and the Default Rate (Bar Graph)
 default_rates %>% 
 ggplot() + 
   geom_bar(aes(x = Prate, y = Drate), stat = 'identity') +
   labs(x="Type of rate was calculated for the institution", y="Default Rate") +
   theme_bw()
 
-# plot the relationship between Prate (Type of rate was calculated for the institution) and the Default Rate (Box Plot)
+# plot the relationship between Prate (Type of rate was calculated for the institution) 
+# and the Default Rate (Box Plot)
 default_rates %>% 
 ggplot(aes(x = Prate, y = Drate), group=Prate) + 
   geom_boxplot() +
@@ -150,7 +157,8 @@ ggplot(aes(x = Prate, y = Drate), group=Prate) +
 
 ```{r var8, eval=TRUE, echo=TRUE}
 
-# plot the relationship between Num (Number of Borrowers in Default) and the Default Rate
+# plot the relationship between Num (Number of Borrowers in Default) 
+# and the Default Rate
 ggplot(default_rates, aes(x = Num, y = Drate)) +
   geom_point(color = "blue") + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
@@ -163,7 +171,8 @@ ggplot(default_rates, aes(x = Num, y = Drate)) +
 
 ```{r var9, eval=TRUE, echo=TRUE}
 
-# plot the relationship between Denom (Number of Borrowers in Repay) and the Default Rate
+# plot the relationship between Denom (Number of Borrowers in Repay) 
+# and the Default Rate
 ggplot(default_rates, aes(x = Denom, y = Drate)) +
   geom_point(color = "blue") + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
@@ -174,7 +183,7 @@ ggplot(default_rates, aes(x = Denom, y = Drate)) +
 
 \newpage
 
-# Model Performance
+# Model Performance (initial models)
 
 
 ```{r var10, eval=FALSE, echo=FALSE}
@@ -265,13 +274,13 @@ glance(lm_9)
 
 ```
 
-## Final model evaluation
+## Multiple Linear Regression Model
 
-```{r var20, eval=FALSE, echo=TRUE}
+```{r var20, eval=TRUE, echo=TRUE}
 
 # Final model usiing all features
-lm_0 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
-glance(lm_0)
+lm_10 <- lm(Drate ~ ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
+glance(lm_10)
 
 ```
 
