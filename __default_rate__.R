@@ -15,3 +15,4 @@ plot_default_rate <- function() {
   p <- p + theme_bw()
   return(p)
 }
+
