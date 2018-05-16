@@ -8,6 +8,6 @@
 #' @examples
 #' load_data()
 load_data <- function() {
-  default_rates <- read_excel("/opt/apps/code/git/compscix-415-1-assignments/efs/data/peps3xx.xls")
+  default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/efs/data/peps3xx.xls")
   return(default_rates)
 }

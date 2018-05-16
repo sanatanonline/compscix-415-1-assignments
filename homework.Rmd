@@ -31,113 +31,16 @@ library(knitr)
 ```{r var1, eval=TRUE, echo=TRUE}
 
 # load the data set from excel file
-default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
+df1 <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/p1R.xls")
+df2 <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/p2R.xls")
+df3 <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/p3R.xls")
+df4 <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/p4R.xls")
+
+df <- rbind(df1, df2, df3, df4)
+glimpse(df)
+saveRDS(df, file="C:/view/opt/apps/git/compscix-415-1-assignments/data/default.rds")
 
 ```
 
 ## The Variables
-
-```{r var2, eval=TRUE, echo=TRUE}
-
-# take a look at the data
-glimpse(default_rates)
-
-```
-
-## Predictors Data Types
-
-```{r var3, eval=TRUE, echo=TRUE}
-
-# add factor to the 'char' columns
-default_rates$Name <- as.factor(default_rates$Name)
-default_rates$State <- as.factor(default_rates$State)
-default_rates$ZipCode <- as.factor(default_rates$ZipCode)
-default_rates$ProgLength <- as.factor(default_rates$ProgLength)
-default_rates$SchoolType <- as.factor(default_rates$SchoolType)
-default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
-default_rates$Prate <- as.factor(default_rates$Prate)
-default_rates$CongDis <- as.factor(default_rates$CongDis)
-# convert the columns to 'double' data type
-default_rates$Drate <- as.double(default_rates$Drate)
-default_rates$Num <- as.double(default_rates$Num)
-default_rates$Denom <- as.double(default_rates$Denom)
-
-set.seed(29283)
-
-train_set <- default_rates %>% sample_frac(0.8)
-test_set <- default_rates %>% filter(!(default_rates$RecordId %in% train_set$RecordId))
-
-train_set
-
-test_set
-
-```
-
-
-## Multiple Linear Regression Model
-
-```{r var20, eval=TRUE, echo=TRUE}
-
-
-# Final model usiing all features
-lm_1 <- lm(Drate ~ ProgLength + SchoolType + Num + EthnicCode, data = default_rates)
-glance(lm_1)
-
-
-lm_10 <- lm(Drate ~ ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
-glance(lm_10)
-
-lm_3 <- lm(Drate ~ Num + Denom, data = default_rates)
-glance(lm_3)
-
-#plot(lm_10)
-
-mean_obs = mean(test_set$Drate)
-
-pred1 <- predict(lm_10, test_set)
-pred2 <- predict(lm_1, test_set)
-pred3 <- predict(lm_3, test_set)
-
-diffs1 <- pred1 - test_set$Drate
-diffs2 <- pred2 - test_set$Drate
-diffs3 <- pred3 - test_set$Drate
-
-
-# Function that returns Root Mean Squared Error
-rmse <- function(error) {
-    sqrt(mean(error^2))
-}
- 
-# Function that returns Mean Absolute Error
-mae <- function(error) {
-    mean(abs(error))
-}
- 
-rmse1 <- rmse(diffs1)
-rmse1
-
-mae1 <- mae(diffs1)
-mae1
-
-rmse2 <- rmse(diffs2)
-rmse2
-
-mae2 <- mae(diffs2)
-mae2
-
-rmse3 <- rmse(diffs3)
-rmse3
-
-mae3 <- mae(diffs3)
-mae3
-
-
-plot(predict(lm_10, test_set),test_set$Drate, col=c('red', 'blue'), xlab="predicted",ylab="actual")
-
-plot(predict(lm_1, test_set),test_set$Drate, col=c('red', 'blue'), xlab="predicted",ylab="actual")
-
-plot(predict(lm_3, test_set),test_set$Drate, col=c('red', 'blue'), xlab="predicted",ylab="actual")
-
-
-```
 

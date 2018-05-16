@@ -1,0 +1,18 @@
+---
+title: "Test"
+author: "Sanatan Das"
+date: "May 13, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r var1, eval=TRUE, echo=TRUE}
+library(edl)
+load_packages()
+data <- load_data()
+glimpse(data)
+
+```
