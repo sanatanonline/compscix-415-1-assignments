@@ -1,0 +1,84 @@
+---
+title: "Models Cross Validation"
+author: "Sanatan Das"
+date: "May 24, 2018"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=5cm]{logo.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+urlcolor: blue
+---
+
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo.png\" style=\"float: right;width: 150px;\"/>')
+   });
+</script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(readxl)
+library(broom)
+library(knitr)
+library(earth)
+```
+
+\newpage
+
+# Initial Data Preparation
+
+## Load the Data
+
+```{r var1, eval=TRUE, echo=FALSE}
+
+# load the data set from excel file
+default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
+
+# add factor to the 'char' columns
+default_rates$Name <- as.factor(default_rates$Name)
+default_rates$State <- as.factor(default_rates$State)
+default_rates$ZipCode <- as.factor(default_rates$ZipCode)
+default_rates$ProgLength <- as.factor(default_rates$ProgLength)
+default_rates$SchoolType <- as.factor(default_rates$SchoolType)
+default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
+default_rates$Prate <- as.factor(default_rates$Prate)
+default_rates$CongDis <- as.factor(default_rates$CongDis)
+# convert the columns to 'double' data type
+default_rates$Drate <- as.double(default_rates$Drate)
+default_rates$Num <- as.double(default_rates$Num)
+default_rates$Denom <- as.double(default_rates$Denom)
+
+```
+
+## Split the Data (training set and test set)
+
+```{r var2, eval=TRUE, echo=FALSE}
+
+# split the data (training data - 80% and test data - 20%)
+set.seed(29283)
+# Let's create our training set using sample_frac.
+train_set <- default_rates %>% sample_frac(0.8)
+# Print train set
+train_set
+# let's create our testing set using the RecordId column. Fill in the blanks.
+test_set <- default_rates %>% filter(!(default_rates$RecordId %in% train_set$RecordId))
+# Print test set
+test_set
+
+```
+
+
+
+
+
