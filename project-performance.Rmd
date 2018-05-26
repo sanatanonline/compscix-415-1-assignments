@@ -3,10 +3,10 @@ title: "Initial Analysis and Model Performance"
 author: "Sanatan Das"
 date: "April 16, 2018"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     number_sections: yes
+    toc: yes
+  pdf_document:
     toc: yes
 header-includes:
 - \usepackage{titling}

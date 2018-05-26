@@ -8,7 +8,19 @@ output:
   html_document:
     number_sections: yes
     toc: yes
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=5cm]{logo.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+urlcolor: blue
 ---
+
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo.png\" style=\"float: right;width: 150px;\"/>')
+   });
+</script>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -23,33 +35,10 @@ library(knitr)
 
 \newpage
 
-# Initial Data Analysis
-
-## Load the data
-
 ```{r var1, eval=TRUE, echo=FALSE}
 
 # load the data set from excel file
-default_rates <- read_excel("/opt/apps/code/git/compscix-415-1-assignments/data/peps3xx.xls")
-
-```
-
-## Know your variables
-
-```{r var2, eval=TRUE, echo=TRUE}
-
-# take a look at the data
-glimpse(default_rates)
-
-```
-
-(Data Source : [Federal Student Aid](https://studentaid.ed.gov/sa/about/data-center/student/default))
-
-(Data Definition : [Instructions for Using the Data Files](https://www2.ed.gov/offices/OSFAP/defaultmanagement/instructions.html))
-
-## Add factors
-
-```{r var3, eval=TRUE, echo=TRUE}
+default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
 
 # add factor to the 'char' columns
 default_rates$Name <- as.factor(default_rates$Name)
@@ -67,155 +56,15 @@ default_rates$Denom <- as.double(default_rates$Denom)
 
 ```
 
-## Relationship between Ethnic Code and the Default Rate
-
-```{r var4, eval=TRUE, echo=TRUE}
-
-# plot the relationship between Ethnic Code and the Default Rate (Bar Graph)
-default_rates %>% 
-ggplot() + 
-  geom_bar(aes(x = EthnicCode, y = Drate), stat = 'identity') +
-  labs(x="Ethnic Code", y="Default Rate") +
-  theme_bw()
-
-# plot the relationship between Ethnic Code and the Default Rate (Box Plot)
-default_rates %>% 
-ggplot(aes(x = EthnicCode, y = Drate), group=EthnicCode) + 
-  geom_boxplot() +
-  labs(x="Ethnic Code", y="Default Rate") +
-  theme_bw()
-
-```
-
-## Relationship between Program Length and the Default Rate
-
-```{r var5, eval=TRUE, echo=TRUE}
-
-# plot the relationship between Program Length and the Default Rate (Bar Graph)
-default_rates %>% 
-ggplot() + 
-  geom_bar(aes(x = ProgLength, y = Drate), stat = 'identity') +
-  labs(x="Program Length", y="Default Rate") +
-  theme_bw()
-
-# plot the relationship between Prog Length and the Default Rate (Box Plot)
-default_rates %>% 
-ggplot(aes(x = ProgLength, y = Drate), group=ProgLength) + 
-  geom_boxplot() +
-  labs(x="Program Length", y="Default Rate") +
-  theme_bw()
-
-```
-
-## Relationship between School Type and the Default Rate
-```{r var6, eval=TRUE, echo=TRUE}
-
-# plot the relationship between School Type and the Default Rate (Bar Graph)
-default_rates %>% 
-ggplot() + 
-  geom_bar(aes(x = SchoolType, y = Drate), stat = 'identity') +
-  labs(x="School Type", y="Default Rate") +
-  theme_bw()
-
-# plot the relationship between School Type and the Default Rate (Box Plot)
-default_rates %>% 
-ggplot(aes(x = SchoolType, y = Drate), group=SchoolType) + 
-  geom_boxplot() +
-  labs(x="School Type", y="Default Rate") +
-  theme_bw()
-
-```
-
-## Relationship between Prate (Type of rate calculated for the institution.) and the Default Rate
-
-```{r var7, eval=TRUE, echo=TRUE}
-
-# plot the relationship between Prate (Type of rate was calculated for the institution) and the Default Rate (Bar Graph)
-default_rates %>% 
-ggplot() + 
-  geom_bar(aes(x = Prate, y = Drate), stat = 'identity') +
-  labs(x="Type of rate was calculated for the institution", y="Default Rate") +
-  theme_bw()
-
-# plot the relationship between Prate (Type of rate was calculated for the institution) and the Default Rate (Box Plot)
-default_rates %>% 
-ggplot(aes(x = Prate, y = Drate), group=Prate) + 
-  geom_boxplot() +
-  labs(x="Type of rate was calculated for the institution", y="Default Rate") +
-  theme_bw()
-
-```
-
-## Relationship between Num (Number of Borrowers in Default) and the Default Rate
-
-```{r var8, eval=TRUE, echo=TRUE}
-
-# plot the relationship between Num (Number of Borrowers in Default) and the Default Rate
-ggplot(default_rates, aes(x = Num, y = Drate)) +
-  geom_point(color = "blue") + 
-  geom_smooth(method = "lm", se = FALSE, color = "red") + 
-  labs(x="Number of Borrowers in Default", y="Default Rate") +
-  theme_bw()
-
-```
-
-## Relationship between Denom (Number of Borrowers in Repay) and the Default Rate
-
-```{r var9, eval=TRUE, echo=TRUE}
-
-# plot the relationship between Denom (Number of Borrowers in Repay) and the Default Rate
-ggplot(default_rates, aes(x = Denom, y = Drate)) +
-  geom_point(color = "blue") + 
-  geom_smooth(method = "lm", se = FALSE, color = "red") + 
-  labs(x="Number of Borrowers in Repay", y="Default Rate") +
-  theme_bw()
-
-```
-
-\newpage
-
-# Model Performance
-
-
-```{r var10, eval=FALSE, echo=FALSE}
-
-# Linear model on 'Name' feature
-lm_1 <- lm(Drate ~ Name, data = default_rates)
-tidy(lm_1)
-
-```
-
-```{r var11, eval=FALSE, echo=FALSE}
-
-# Linear model on 'Name' feature
-lm_1 <- lm(Drate ~ Name, data = default_rates)
-tidy(lm_1)
-
-```
-
-```{r var12, eval=FALSE, echo=FALSE}
-
-# Linear model on 'State' feature
-lm_2 <- lm(Drate ~ State, data = default_rates)
-tidy(lm_2)
-
-```
-
-```{r var13, eval=FALSE, echo=FALSE}
-
-# Linear model on 'ZipCode' feature
-lm_3 <- lm(Drate ~ ZipCode, data = default_rates)
-tidy(lm_3)
-
-```
+# Basic Models (Linear Regression)
 
 ## Model evaluation on 'ProgLength' feature
 
-```{r var14, eval=TRUE, echo=TRUE}
+```{r var2, eval=TRUE, echo=TRUE}
 
 # Linear model on 'ProgLength' feature
-lm_4 <- lm(Drate ~ ProgLength, data = default_rates)
-glance(lm_4)
+lm_1 <- lm(Drate ~ ProgLength, data = default_rates)
+glance(lm_1)
 
 ```
 
@@ -223,11 +72,11 @@ glance(lm_4)
 
 ## Model evaluation on 'SchoolType' feature
 
-```{r var15, eval=TRUE, echo=TRUE}
+```{r var3, eval=TRUE, echo=TRUE}
 
 # Linear model on 'SchoolType' feature
-lm_5 <- lm(Drate ~ SchoolType, data = default_rates)
-glance(lm_5)
+lm_2 <- lm(Drate ~ SchoolType, data = default_rates)
+glance(lm_2)
 
 ```
 
@@ -235,11 +84,11 @@ glance(lm_5)
 
 ## Model evaluation on 'Num' feature
 
-```{r var16, eval=TRUE, echo=TRUE}
+```{r var4, eval=TRUE, echo=TRUE}
 
 # Linear model on 'Num' feature
-lm_6 <- lm(Drate ~ Num, data = default_rates)
-tidy(lm_6)
+lm_3 <- lm(Drate ~ Num, data = default_rates)
+tidy(lm_3)
 
 ```
 
@@ -247,51 +96,45 @@ tidy(lm_6)
 
 ## Model evaluation on 'Denom' feature
 
-```{r var17, eval=TRUE, echo=TRUE}
+```{r var5, eval=TRUE, echo=TRUE}
 
 # Linear model on 'Denom' feature
-lm_7 <- lm(Drate ~ Denom, data = default_rates)
-tidy(lm_7)
+lm_4 <- lm(Drate ~ Denom, data = default_rates)
+tidy(lm_4)
 
 ```
 
 **Conclusion:** *Denom* feature can be considered as a predictor.
 
-```{r var18, eval=FALSE, echo=FALSE}
+```{r var6, eval=FALSE, echo=FALSE}
 
 # Linear model on 'Prate' feature
-lm_8 <- lm(Drate ~ Prate, data = default_rates)
-tidy(lm_8)
+lm_5 <- lm(Drate ~ Prate, data = default_rates)
+tidy(lm_5)
 
 ```
 
 ## Model evaluation on 'EthnicCode' feature
 
-```{r var19, eval=TRUE, echo=TRUE}
+```{r var7, eval=TRUE, echo=TRUE}
 
 # Linear model on 'EthnicCode' feature
-lm_9 <- lm(Drate ~ EthnicCode, data = default_rates)
-glance(lm_9)
+lm_6 <- lm(Drate ~ EthnicCode, data = default_rates)
+glance(lm_6)
 
 ```
 **Conclusion:** From the above metrics, r.squared value is 0.03850229. *EthnicCode* is a good predictor.
 
-## Final model evaluation
+# Final Model
 
-```{r var20, eval=TRUE, echo=TRUE}
+## Multiple Linear Regression
+
+```{r var8, eval=TRUE, echo=TRUE}
 
 # Final model usiing all features
 lm_0 <- lm(Drate ~ ProgLength + SchoolType + Num + Denom + EthnicCode, data = default_rates)
 summary(lm_0)
 plot(lm_0)
-
-```
-
-```{r var21, eval=FALSE, echo=TRUE}
-
-# Final model usiing all features
-lm_0 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
-glance(lm_0)
 
 ```
 
