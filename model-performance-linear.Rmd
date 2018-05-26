@@ -125,7 +125,7 @@ glance(lm_6)
 ```
 **Conclusion:** From the above metrics, r.squared value is 0.03850229. *EthnicCode* is a good predictor.
 
-# Final Model
+# Final Linear Model
 
 ## Multiple Linear Regression
 
