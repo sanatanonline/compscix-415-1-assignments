@@ -1,0 +1,128 @@
+---
+title: "Model Performance - Multivariate Adaptive Regression Splines"
+author: "Sanatan Das"
+date: "April 24, 2018"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    number_sections: yes
+    toc: yes
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=5cm]{logo.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+urlcolor: blue
+---
+
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo.png\" style=\"float: right;width: 150px;\"/>')
+   });
+</script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(readxl)
+library(broom)
+library(knitr)
+library(earth)
+```
+
+\newpage
+
+```{r var1, eval=TRUE, echo=FALSE}
+
+# load the data set from excel file
+default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
+
+# add factor to the 'char' columns
+default_rates$Name <- as.factor(default_rates$Name)
+default_rates$State <- as.factor(default_rates$State)
+default_rates$ZipCode <- as.factor(default_rates$ZipCode)
+default_rates$ProgLength <- as.factor(default_rates$ProgLength)
+default_rates$SchoolType <- as.factor(default_rates$SchoolType)
+default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
+default_rates$Prate <- as.factor(default_rates$Prate)
+default_rates$CongDis <- as.factor(default_rates$CongDis)
+# convert the columns to 'double' data type
+default_rates$Drate <- as.double(default_rates$Drate)
+default_rates$Num <- as.double(default_rates$Num)
+default_rates$Denom <- as.double(default_rates$Denom)
+
+```
+
+# Basic Models (MARS)
+
+## Model evaluation on 'ProgLength' feature
+
+```{r var2, eval=TRUE, echo=TRUE}
+
+# MARS model on 'ProgLength' feature
+mars_1 <- earth(Drate ~ ProgLength, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_1, digit=3);
+plotd(mars_1)
+
+```
+
+## Model evaluation on 'SchoolType' feature
+
+```{r var3, eval=TRUE, echo=TRUE}
+
+# MARS model on 'SchoolType' feature
+mars_2 <- earth(Drate ~ SchoolType, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_2, digit=3);
+plotd(mars_2)
+
+```
+
+## Model evaluation on 'Num' feature
+
+```{r var4, eval=TRUE, echo=TRUE}
+
+# MARS model on 'Num' feature
+mars_3 <- earth(Drate ~ Num, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_3, digit=3);
+plotd(mars_3)
+
+```
+
+## Model evaluation on 'Denom' feature
+
+```{r var5, eval=TRUE, echo=TRUE}
+
+# MARS model on 'Denom' feature
+mars_4 <- earth(Drate ~ Denom, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_4, digit=3);
+plotd(mars_4)
+
+```
+
+## Model evaluation on 'EthnicCode' feature
+
+```{r var7, eval=TRUE, echo=TRUE}
+
+# Linear model on 'EthnicCode' feature
+mars_6 <- earth(Drate ~ EthnicCode, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_6, digit=3);
+plotd(mars_6)
+
+```
+
+# Final MARS Model
+
+## MARS model with multiple features
+
+```{r var8, eval=TRUE, echo=TRUE}
+
+# MARS model on multiple features
+mars_0 <- earth(Drate ~ ProgLength + SchoolType + Num + Denom + EthnicCode, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+summary(mars_0, digit=3);
+plotd(mars_0)
+
+```
