@@ -3,10 +3,10 @@ title: "Models Cross Validation"
 author: "Sanatan Das"
 date: "May 24, 2018"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     number_sections: yes
-    toc: yes
-  pdf_document:
     toc: yes
 header-includes:
 - \usepackage{titling}
@@ -40,7 +40,7 @@ library(earth)
 
 ## Load the Data
 
-```{r var1, eval=TRUE, echo=FALSE}
+```{r var1, eval=TRUE, echo=TRUE}
 
 # load the data set from excel file
 default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
@@ -63,7 +63,7 @@ default_rates$Denom <- as.double(default_rates$Denom)
 
 ## Split the Data (training set and test set)
 
-```{r var2, eval=TRUE, echo=FALSE}
+```{r var2, eval=TRUE, echo=TRUE}
 
 # split the data (training data - 80% and test data - 20%)
 set.seed(29283)
