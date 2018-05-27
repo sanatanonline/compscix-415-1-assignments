@@ -1,0 +1,36 @@
+---
+title: "EFS&trade; - the student loan default prediction application (using 'edl' package)"
+author: "Sanatan Das"
+date: "May 27, 2018"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    number_sections: yes
+    toc: yes
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=5cm]{logo.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+urlcolor: blue
+---
+
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo.png\" style=\"float: right;width: 150px;\"/>')
+   });
+</script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+\newpage
+
+# The Problem Statement: Student Loan Default Crisis
