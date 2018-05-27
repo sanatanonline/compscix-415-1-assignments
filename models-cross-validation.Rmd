@@ -78,7 +78,102 @@ test_set
 
 ```
 
+```{r var3, eval=TRUE, echo=FALSE}
 
+# Linear Regression model
+lm_0 <- lm(Drate ~ ProgLength + SchoolType + Num + Denom + EthnicCode, data = default_rates)
 
+# MARS model
+mars_0 <- earth(Drate ~ ProgLength + SchoolType + Num + Denom + EthnicCode, data = default_rates, pmethod="backward", nprune=20, nfold=10);
+
+# Function that returns Root Mean Squared Error
+rmse <- function(error) {
+    sqrt(mean(error^2))
+}
+ 
+# Function that returns Mean Absolute Error
+mae <- function(error) {
+    mean(abs(error))
+}
+
+```
+
+# Evaluation of Linear Regression model
+
+## Predict the test data (lm)
+
+```{r var4, eval=TRUE, echo=TRUE}
+
+lm_predict <- predict(lm_0, test_set)
+
+```
+## Predicted vs Actual
+
+```{r var5, eval=TRUE, echo=TRUE}
+
+plot(lm_predict,test_set$Drate, col=c('red', 'blue'), xlab="predicted", ylab="actual")
+
+```
+
+## Mean Absolute Error
+
+```{r var6, eval=TRUE, echo=TRUE}
+
+lm_diffs <- lm_predict - test_set$Drate
+lm_mae <- mae(lm_diffs)
+lm_mae
+
+```
+
+## Root Mean Squared Error
+
+```{r var7, eval=TRUE, echo=TRUE}
+
+lm_rmse <- rmse(lm_diffs)
+lm_rmse
+
+```
+
+# Evaluation of MARS model 
+
+## Predict the test data (mars)
+
+```{r var8, eval=TRUE, echo=TRUE}
+
+mars_predict <- predict(mars_0, test_set)[, 1]
+
+```
+
+## Predicted vs Actual
+
+```{r var9, eval=TRUE, echo=TRUE}
+
+plot(mars_predict,test_set$Drate, col=c('red', 'blue'), xlab="predicted", ylab="actual")
+
+```
+
+## Mean Absolute Error
+
+```{r var10, eval=TRUE, echo=TRUE}
+
+mars_diffs <- mars_predict - test_set$Drate
+mars_mae <- mae(mars_diffs)
+mars_mae
+
+```
+
+## Root Mean Squared Error
+
+```{r var11, eval=TRUE, echo=TRUE}
+
+mars_rmse <- rmse(mars_diffs)
+mars_rmse
+
+```
+
+# Final Note
+
+## Model Selection
+From the above validation, we see that the Linear regression model has MAE = 3.88506 and RMSE = 5.346097 where the MARS model has MAE = 2.119824 and RMSE = 3.068444. So, the MARS model performs better on the test data. We will use the MARS model on our final application.
 
 
