@@ -33,4 +33,104 @@ library(knitr)
 
 \newpage
 
-# The Problem Statement: Student Loan Default Crisis
+# What is Education Loan Assistant&trade;?
+
+**T**he Education Loan Assistant&trade; is a tool that provides guidance and analysis to the **Banks and Credit Unions** before they approve any educational loan to the student loan applications. This tool provides a thorough analysis report on the information provided in the loan application based on the predictive model we build. It also depicts the likelihood of a loan application being default (Not possible, May be possible, Strongly possible, Not recommended ). It is the final decision of the Bank and the Credit Union agents to take on the loan approval. The Education Loan Assistant&trade; is a helper to report the risks so that the banker or lender can take well informed decision.
+
+Every year U.S. Department of Education releases a detailed dataset on the student debt and repayment. These datasets have wide variety of features and information about the educational loan system in the USA. This project does a thorough analysis of those data and builds a robust predictive model for predicting the risk on student loan approvals to help the lender organizations. This porjet also buils an API (application programming interface) and a web based tool, so that the bankers and lending agents can use it. The API is built in such a way that any developer can use it from different kind of client applications (web apps or mobile apps)
+
+This tool will be able to train and build the model again and again when new data set is added to the existing data set as every year a new data set will be released by the U.S. Department of Education.
+
+It will also generate a monthly report on the predictions and a yearly report of validations to validate if there is any default in a student loan where the tool predicted as no risk or low risk. Althouh we have to wait for some time to see the first analysis/validation report (tool performace metrics).
+
+# What are the benefits from this solution (predictive modeling)?
+
+**T**here will be a list of advantages that the Bank and Credit Unions will get while using this tool (model):
+
+* **A recommendation engine** : The phone banker, store banker and the lending agents will get a full insght of information, risk and statistcal advice from this tool before approving any student loan. This will reduce the number of default incidents in a significant number for the lending organizations.
+
+* **Reduce huge monetary loss** : The above statistical report shows that increasing number of student loan default is a threat and huge loss of money for Banks, Credit Unions or any Lending organizations. We see that billions of dollars are not paid or not paid on time in the student loan business. Any prevention of the default rate will save a significant amount of money of the leding organizations. ***The success criteria of this model is to predict the default risk by >95% true prediction.***
+
+* **Business growth** : The tool/model will generate a monthly and annual report so that they can measure the business performance metrics.
+
+* **New product ideas** : The product managers and the business analysts will get to know the important factors of the Educational Loan business. They might get inspired to revise their list of information that they collect from the student/family/individuals through paper based applications or electronically.
+
+* **Improving global economy** : The decreasing number of defaults in the lending business will strengthen the national and global economy and reduce the chances of recession. Overall economical growth will increase.
+
+# Who are going to use this solution (business users)?
+
+**T**his tool (model) can be used by multiple business users (of different roles) for their own benefits in the Banking and Student Loan organizations. We can think of the follwing business users who can use this model (in a different format: Web Application or PDF Reports) and get different kinds of benefits out of it.
+
+* **A phone banker/store banker or lending agent** : This kind of users will use the user interfaace via a website or a web application to get the instant help on analysing the stundent loan application data and seek for a recommendation whether or not to approve a loan application. These are daily business users. Most of the users will fall into this category.
+
+* **Bank, Credit Unions and Lending Organizations Management** : This kind of users will use the tool in the format of reports and metrics, will look at the figures and predict the future profit of the organization. They are not daily users. They will see the reports monthly or annually or on-demand basis.
+
+* **Business Analysts and Product Managers** : This kind of users will get an experience of both the formats (Web Application and the PDF Reports). They will use those to create new business ideas, improving their existing products and creating new products.
+
+# Solution deployment, post production maintenance and reports
+
+**T**he proposed model will be deployed under a wrapper of an web API so that the above mentioned user can use the model through a nice set of user interfaces. The batch job will run periidocally for generating PDF reports. The high level deployment model will look like below.
+
+* **Application Module** - Model->JRI API (an API for Java and R integration)->Java Application->Web Application
+
+* **Batch Module** - Model->JRI API (an API for Java and R integration)->Java Application->PDF Reports (email the reports or store in a directory location)
+
+The post porduction and the maintenance team will be using the log statements and checking the model/tool performance metrics on regular basis.
+
+# Technology Stack
+
+\newpage
+
+
+```{r var8, echo=FALSE, fig.cap="Technology Stack", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/tech.PNG")
+```
+
+# User Interface
+
+\newpage
+
+```{r var1, echo=FALSE, fig.cap="Dashboard", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/2.PNG")
+```
+
+\newpage
+
+```{r var2, echo=FALSE, fig.cap="Login to the application", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/2.PNG")
+```
+
+\newpage
+
+```{r var3, echo=FALSE, fig.cap="Application form", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/3.PNG")
+```
+
+\newpage
+
+```{r var4, echo=FALSE, fig.cap="Fill up the form", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/4.PNG")
+```
+
+\newpage
+
+```{r var5, echo=FALSE, fig.cap="Submit the form", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/5.PNG")
+```
+
+\newpage
+
+```{r var6, echo=FALSE, fig.cap="View Recommendation", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/6.PNG")
+```
+
+\newpage
+
+```{r var7, echo=FALSE, fig.cap="Sign out from the application", out.width = '100%'}
+knitr::include_graphics("C:/view/opt/apps/git/compscix-415-1-assignments/data/sc/7.PNG")
+```
+
+
+
+
+
