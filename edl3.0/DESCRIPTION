@@ -1,0 +1,10 @@
+Package: edl3.0
+Title: edl3.0 - predict student loan default rate
+Version: 3.0
+Authors@R: person("Sanatan", "Das", email = "sanatanonline@gmail.com", role = c("aut", "cre"))
+Description: The edl3.0 package is used to predict the student loan default rate.
+Depends: R (>= 3.4.3)
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
