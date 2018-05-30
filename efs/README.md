@@ -100,4 +100,21 @@ You have to use the following columns to create a test data frame.
 * Cong Dis - Congressional District—The congressional district of the main institution
 
 
+## Project and Documentation Structure
+
+* data - contains the data used for analysis, training and testing.
+
+* docs - contains the documentation about problem statement, analysis, models, and cross validations.
+
+* graphs - contains documents for EDA.
+
+* logs - contains log records.
+
+* pkgs - contains the edl3.0 package and all source code and objects.
+
+* reports - contains the report on web application that uses edl3.0 package.
+
+* tests - contains unit test cases and test data.
+
+
 For more details about edl3.0, see https://github.com/sanatanonline/csx415-project/tree/master/efs
